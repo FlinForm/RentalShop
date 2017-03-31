@@ -53,4 +53,24 @@ public class SportEquipment {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SportEquipment equipment = (SportEquipment) o;
+
+        if (price != equipment.price) return false;
+        if (category != equipment.category) return false;
+        return title != null ? title.equals(equipment.title) : equipment.title == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = category != null ? category.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + price;
+        return result;
+    }
 }

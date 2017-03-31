@@ -29,9 +29,6 @@ public class AddNewItemBox {
         window.setMinHeight(300);
         window.setResizable(false);
 
-
-
-
         // Creating window elements
 
         Label label1 = new Label();
@@ -46,15 +43,12 @@ public class AddNewItemBox {
         Label label4 = new Label();
         label4.setText("Quantity");
 
-
-
         ChoiceBox<Category> category = new ChoiceBox<>();
         category.getItems().addAll(Category.BICYCLE, Category.ROLLER_SKATES, Category.SKATES, Category.SKIING, Category.SNOWBOARD);
+        category.setValue(Category.BICYCLE);
 
         TextField title = new TextField();
-
         TextField price = new TextField();
-
         TextField quantity = new TextField();
 
 
@@ -62,7 +56,7 @@ public class AddNewItemBox {
         Button yesButton = new Button();
         Button noButton = new Button();
             yesButton.setText("Add");
-            noButton.setText("Exit");
+            noButton.setText("Cancel");
 
         // Creating panes and placing elements
         GridPane pane = new GridPane();
@@ -86,11 +80,24 @@ public class AddNewItemBox {
         yesButton.setOnAction(event -> {
             equipment.setCategory(category.getValue());
             equipment.setTitle(title.getText());
-            equipment.setPrice(Integer.parseInt(price.getText()));
-            equipment.setQuantity(Integer.parseInt(quantity.getText()));
+            try {
+                equipment.setPrice(Integer.parseInt(price.getText()));
+                equipment.setQuantity(Integer.parseInt(quantity.getText()));
+                if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
+                    AllertBox.display("You entered wrong data!");
+                    window.close();
+                }
+            } catch (NumberFormatException e) {
+                AllertBox.display("You entered wrong data!");
+                window.close();
+            }
+
             window.close();
         });
-        noButton.setOnAction(event -> window.close());
+        noButton.setOnAction(event -> {
+            equipment = null;
+            window.close();
+        });
 
         Scene scene = new Scene(pane);
         window.setScene(scene);

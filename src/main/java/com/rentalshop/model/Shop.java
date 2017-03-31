@@ -21,26 +21,28 @@ public class Shop {
         return goods;
     }
 
-    public void addEquipment(SportEquipment equipment, Integer numberOfGoods) {
-        if (goods.containsKey(equipment)) {
-            int value = goods.get(equipment);
-            value += numberOfGoods;
-            goods.put(equipment, value);
-            return;
-        }
-        goods.put(equipment, numberOfGoods);
-    }
-
     public void setGoods(Map<SportEquipment, Integer> goods) {
         this.goods = goods;
     }
 
-    public void addItem() {
+    public void addItem(SportEquipment equipment) {
+        if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
+            return;
+        }
+        if (goods.containsKey(equipment)) {
+            int quantity = goods.get(equipment);
+            goods.remove(equipment);
+            equipment.setQuantity(equipment.getQuantity() + quantity);
+            goods.put(equipment, equipment.getQuantity());
+            return;
+        }
+
+        goods.put(equipment, equipment.getQuantity());
 
     }
 
-    public void removeItem() {
-
+    public void removeItem(SportEquipment equipment) {
+        goods.remove(equipment);
     }
 
 

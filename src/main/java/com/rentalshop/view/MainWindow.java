@@ -114,19 +114,29 @@ public class MainWindow {
         addItemButton.setText("Add item");
         addItemButton.setPrefSize(100, 25);
         addItemButton.setOnAction(e -> {
-            AddNewItemBox.display();
+            SportEquipment equipment = AddNewItemBox.display();
+            if (equipment != null) {
+                shop.addItem(equipment);
+                view.setItems(getOList());
+            }
         });
 
         Button removeItemButton = new Button();
         removeItemButton.setText("Remove item");
         removeItemButton.setPrefSize(100, 25);
+        removeItemButton.setOnAction(e -> {
+            shop.removeItem((SportEquipment) view.getSelectionModel().getSelectedItem());
+            view.setItems(getOList());
+        });
 
         Button findItemButton = new Button();
         findItemButton.setText("Find Item");
         findItemButton.setPrefSize(100, 25);
 
-        ChoiceBox choiceBox = new ChoiceBox();
+        ChoiceBox<String> choiceBox = new ChoiceBox();
         choiceBox.setPrefWidth(100);
+        choiceBox.getItems().addAll("All equipment", "Rented", "Available");
+        choiceBox.setValue("All equipment");
 
         Button saveButton = new Button();
         saveButton.setText("Save");
