@@ -49,19 +49,44 @@ public class MainWindow {
 
     private HBox addTopHBox(){
         HBox hBox = new HBox();
-        hBox.setPadding(new Insets(25, 100, 25, 150));
+        hBox.setPadding(new Insets(25, 100, 25, 250));
         hBox.setSpacing(50);
         hBox.setStyle("-fx-background-color: #4a4a4a");
 
-        Button goodsButton = new Button();
-        goodsButton.setText("Sport Inventory");
-        goodsButton.setPrefSize(120, 25);
 
-        Button clientButton = new Button();
-        clientButton.setText("Clients");
-        clientButton.setPrefSize(120, 25);
+        Button addItemButton = new Button();
+        addItemButton.setText("Add item");
+        addItemButton.setPrefSize(100, 25);
+        addItemButton.setOnAction(e -> {
+            SportEquipment equipment = AddNewItemBox.display();
+            if (equipment != null) {
+                shop.addItem(equipment);
+                view.setItems(getOList());
+            }
+        });
 
-        hBox.getChildren().addAll(goodsButton, clientButton);
+        Button removeItemButton = new Button();
+        removeItemButton.setText("Remove item");
+        removeItemButton.setPrefSize(100, 25);
+        removeItemButton.setOnAction(e -> {
+            shop.removeItem((SportEquipment) view.getSelectionModel().getSelectedItem());
+            view.setItems(getOList());
+        });
+
+        Button findItemButton = new Button();
+        findItemButton.setText("Find Item");
+        findItemButton.setPrefSize(100, 25);
+
+        ChoiceBox<String> choiceBox = new ChoiceBox();
+        choiceBox.setPrefWidth(100);
+        choiceBox.getItems().addAll("All equipment", "Rented", "Available");
+        choiceBox.setValue("All equipment");
+
+        Button rentItemButton = new Button();
+        rentItemButton.setText("Rent item");
+        rentItemButton.setPrefSize(100, 25);
+
+        hBox.getChildren().addAll(addItemButton, removeItemButton, findItemButton, choiceBox, rentItemButton);
 
         return hBox;
     }
@@ -104,39 +129,32 @@ public class MainWindow {
     }
 
     private HBox addBottomHBox() {
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(25, 25, 25, 150));
-        hBox.setSpacing(30);
-        hBox.setStyle("-fx-background-color: #4a4a4a");
-        hBox.setAlignment(Pos.CENTER_RIGHT);
+        HBox rightHBox = new HBox();
+        rightHBox.setPadding(new Insets(25, 25, 25, 25));
+        rightHBox.setSpacing(30);
+        rightHBox.setStyle("-fx-background-color: #4a4a4a");
+        rightHBox.setAlignment(Pos.CENTER_RIGHT);
 
-        Button addItemButton = new Button();
-        addItemButton.setText("Add item");
-        addItemButton.setPrefSize(100, 25);
-        addItemButton.setOnAction(e -> {
-            SportEquipment equipment = AddNewItemBox.display();
-            if (equipment != null) {
-                shop.addItem(equipment);
-                view.setItems(getOList());
-            }
-        });
+        HBox leftHBOX = new HBox();
+        leftHBOX.setPadding(new Insets(25,25,25,125));
+        leftHBOX.setSpacing(30);
+        leftHBOX.setStyle("-fx-background-color: #4a4a4a");
+        leftHBOX.setAlignment(Pos.CENTER_LEFT);
 
-        Button removeItemButton = new Button();
-        removeItemButton.setText("Remove item");
-        removeItemButton.setPrefSize(100, 25);
-        removeItemButton.setOnAction(e -> {
-            shop.removeItem((SportEquipment) view.getSelectionModel().getSelectedItem());
-            view.setItems(getOList());
-        });
+        HBox mergeHBox = new HBox();
+        mergeHBox.setPadding(new Insets(25,25,25,25));
+        mergeHBox.setSpacing(350);
+        mergeHBox.setStyle("-fx-background-color: #4a4a4a");
+        mergeHBox.setAlignment(Pos.CENTER);
 
-        Button findItemButton = new Button();
-        findItemButton.setText("Find Item");
-        findItemButton.setPrefSize(100, 25);
+        Button goodsButton = new Button();
+        goodsButton.setText("Sport Inventory");
+        goodsButton.setPrefSize(120, 25);
 
-        ChoiceBox<String> choiceBox = new ChoiceBox();
-        choiceBox.setPrefWidth(100);
-        choiceBox.getItems().addAll("All equipment", "Rented", "Available");
-        choiceBox.setValue("All equipment");
+        Button clientButton = new Button();
+        clientButton.setText("Clients");
+        clientButton.setPrefSize(120, 25);
+
 
         Button saveButton = new Button();
         saveButton.setText("Save");
@@ -151,9 +169,11 @@ public class MainWindow {
             System.exit(0);
         });
 
-        hBox.getChildren().addAll(addItemButton, removeItemButton, findItemButton, choiceBox, saveButton, exitButton);
+        rightHBox.getChildren().addAll(saveButton, exitButton);
+        leftHBOX.getChildren().addAll(goodsButton, clientButton);
+        mergeHBox.getChildren().addAll(leftHBOX, rightHBox);
 
-        return hBox;
+        return mergeHBox;
     }
 
     private TableView addCenterView() {
