@@ -32,16 +32,16 @@ public class AddNewItemWindow {
         // Creating window elements
 
         Label label1 = new Label();
-        label1.setText("Category");
+        label1.setText("Category:");
 
         Label label2 = new Label();
-        label2.setText("Title");
+        label2.setText("Title:");
 
         Label label3 = new Label();
-        label3.setText("Price");
+        label3.setText("Price:");
 
         Label label4 = new Label();
-        label4.setText("Quantity");
+        label4.setText("Quantity:");
 
         ChoiceBox<Category> category = new ChoiceBox<>();
         category.getItems().addAll(Category.BICYCLE, Category.ROLLER_SKATES, Category.SKATES, Category.SKIING, Category.SNOWBOARD);
@@ -84,11 +84,11 @@ public class AddNewItemWindow {
                 equipment.setPrice(Integer.parseInt(price.getText()));
                 equipment.setQuantity(Integer.parseInt(quantity.getText()));
                 if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
-                    AllertBox.display("You entered wrong data!");
+                    AllertBox.displayMessage("You entered wrong data!");
                     window.close();
                 }
             } catch (NumberFormatException e) {
-                AllertBox.display("You entered wrong data!");
+                AllertBox.displayMessage("You entered wrong data!");
                 window.close();
             }
 

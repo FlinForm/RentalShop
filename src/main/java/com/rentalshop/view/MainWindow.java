@@ -86,6 +86,7 @@ public class MainWindow {
         Button rentItemButton = new Button();
         rentItemButton.setText("Rent item");
         rentItemButton.setPrefSize(100, 25);
+        rentItemButton.setOnAction(e -> rentItem((SportEquipment) view.getSelectionModel().getSelectedItem()));
 
         hBox.getChildren().addAll(addItemButton, removeItemButton, findItemButton, choiceBox, rentItemButton);
 
@@ -234,5 +235,34 @@ public class MainWindow {
         parser.writeData("src/main/resources/rentedunits.xml", units);
         parser.writeData("src/main/resources/clients.xml", clients);
     }
+
+    private void rentItem(SportEquipment equipment) {
+        Object[] data = RentItemWindow.display(clients.getClients());
+        if (equipment == null) {
+            AllertBox.displayMessage("Please, select item you want to rent!");
+            return;
+        }
+        if (data[0] == null || data[1] == null) {
+            return;
+        }
+        Renter renter = (Renter) data[0];
+        int quantityRentItems = (int) data[1];
+        if (quantityRentItems > equipment.getQuantity()) {
+            AllertBox.displayMessage("You trying to rent so much items... :)");
+            return;
+        } else if (quantityRentItems > renter.getAvailableItems()) {
+            AllertBox.displayMessage("You can't rent more then 3 items!");
+            return;
+        }
+        for (int i = 0; i < quantityRentItems; i++) {
+            renter.setItem(equipment);
+            equipment.decQuantity();
+        }
+
+        units.addUnit(equipment, quantityRentItems);
+        shop.refreshItem(equipment);
+        setOList();
+    }
+
 
 }

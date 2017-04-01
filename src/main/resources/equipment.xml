@@ -3,15 +3,6 @@
     <goods>
         <entry>
             <key>
-                <category>BICYCLE</category>
-                <price>1000</price>
-                <quantity>5</quantity>
-                <title>Canondale</title>
-            </key>
-            <value>5</value>
-        </entry>
-        <entry>
-            <key>
                 <category>SKIING</category>
                 <price>100</price>
                 <quantity>1</quantity>
@@ -22,65 +13,11 @@
         <entry>
             <key>
                 <category>BICYCLE</category>
-                <price>50</price>
-                <quantity>8</quantity>
-                <title>Specialized</title>
-            </key>
-            <value>8</value>
-        </entry>
-        <entry>
-            <key>
-                <category>BICYCLE</category>
-                <price>50</price>
-                <quantity>2</quantity>
-                <title>GT</title>
-            </key>
-            <value>2</value>
-        </entry>
-        <entry>
-            <key>
-                <category>SKATES</category>
                 <price>70</price>
-                <quantity>6</quantity>
-                <title>Nike-Bauer</title>
-            </key>
-            <value>6</value>
-        </entry>
-        <entry>
-            <key>
-                <category>ROLLER_SKATES</category>
-                <price>55</price>
-                <quantity>2</quantity>
-                <title>Nike_Bauer</title>
-            </key>
-            <value>2</value>
-        </entry>
-        <entry>
-            <key>
-                <category>BICYCLE</category>
-                <price>70</price>
-                <quantity>5</quantity>
+                <quantity>3</quantity>
                 <title>Merida</title>
             </key>
-            <value>5</value>
-        </entry>
-        <entry>
-            <key>
-                <category>SKATES</category>
-                <price>50</price>
-                <quantity>10</quantity>
-                <title>Graf</title>
-            </key>
-            <value>10</value>
-        </entry>
-        <entry>
-            <key>
-                <category>ROLLER_SKATES</category>
-                <price>100</price>
-                <quantity>2</quantity>
-                <title>Bauer</title>
-            </key>
-            <value>2</value>
+            <value>3</value>
         </entry>
         <entry>
             <key>
@@ -99,6 +36,69 @@
                 <title>Trek</title>
             </key>
             <value>5</value>
+        </entry>
+        <entry>
+            <key>
+                <category>ROLLER_SKATES</category>
+                <price>55</price>
+                <quantity>2</quantity>
+                <title>Nike_Bauer</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>50</price>
+                <quantity>2</quantity>
+                <title>GT</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>50</price>
+                <quantity>10</quantity>
+                <title>Graf</title>
+            </key>
+            <value>10</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>1000</price>
+                <quantity>5</quantity>
+                <title>Canondale</title>
+            </key>
+            <value>5</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>50</price>
+                <quantity>8</quantity>
+                <title>Specialized</title>
+            </key>
+            <value>8</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>70</price>
+                <quantity>6</quantity>
+                <title>Nike-Bauer</title>
+            </key>
+            <value>6</value>
+        </entry>
+        <entry>
+            <key>
+                <category>ROLLER_SKATES</category>
+                <price>100</price>
+                <quantity>2</quantity>
+                <title>Bauer</title>
+            </key>
+            <value>2</value>
         </entry>
         <entry>
             <key>

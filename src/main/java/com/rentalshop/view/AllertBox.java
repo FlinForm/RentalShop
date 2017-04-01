@@ -16,13 +16,12 @@ import javafx.stage.Stage;
  */
 public class AllertBox {
 
-    public static void display(String text) {
+    public static void displayMessage(String text) {
         // Creating window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Warning!");
-        window.setMinWidth(100);
-        window.setMinHeight(150);
+
         window.setResizable(false);
 
         Label label = new Label();

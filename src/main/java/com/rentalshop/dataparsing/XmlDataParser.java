@@ -17,7 +17,7 @@ public class XmlDataParser implements DataParser{
             JAXBContext context = JAXBContext.newInstance(o.getClass());
             Unmarshaller unmarshaller = context.createUnmarshaller();
             o = unmarshaller.unmarshal(new File(filename));
-        } catch (JAXBException e) {
+        } catch (JAXBException ignored) {
         }
         return o;
     }

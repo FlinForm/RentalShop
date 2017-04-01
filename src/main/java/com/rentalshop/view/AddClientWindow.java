@@ -30,13 +30,13 @@ public class AddClientWindow {
         // Creating window elements
 
         Label label1 = new Label();
-        label1.setText("Name");
+        label1.setText("Name:");
 
         Label label2 = new Label();
-        label2.setText("Surname");
+        label2.setText("Surname:");
 
         Label label3 = new Label();
-        label3.setText("Passport");
+        label3.setText("Passport:");
 
         TextField name = new TextField();
         TextField surname = new TextField();

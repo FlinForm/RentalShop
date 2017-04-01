@@ -50,8 +50,7 @@ public class ClientsWindow {
         borderPane.setCenter(addCenterView());
 
 
-        Scene scene = new Scene(borderPane);
-        return scene;
+        return new Scene(borderPane);
     }
 
     private HBox addTopHBox(){
@@ -77,8 +76,7 @@ public class ClientsWindow {
         removeClientButton.setText("Remove client");
         removeClientButton.setPrefSize(100, 25);
         removeClientButton.setOnAction(e -> {
-            clients.getClients().remove(view.getSelectionModel().getSelectedItem());
-            view.setItems(setOList());
+            removeClient();
         });
 
 
@@ -230,6 +228,19 @@ public class ClientsWindow {
 
         vBox.getChildren().addAll(titleText, allGoods, bicycles, skates, rollerSkates, snowboards, skiing);
         return vBox;
+    }
+
+    private void removeClient() {
+        for (int i = 0; i < clients.getClients().size(); i++) {
+            if (clients.getClients().get(i).equals(view.getSelectionModel().getSelectedItem())) {
+                if (clients.getClients().get(i).hasRentedItems()) {
+                    AllertBox.displayMessage("You can't remove client with rented inventory!");
+                    return;
+                }
+            }
+        }
+        clients.getClients().remove(view.getSelectionModel().getSelectedItem());
+        view.setItems(setOList());
     }
 
     private void save() {

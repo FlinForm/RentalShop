@@ -2,6 +2,7 @@ package com.rentalshop.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Map;
 @XmlType(name = "units")
 @XmlRootElement
 public class RentedUnits {
-    private Map<SportEquipment, Integer> rentedUnits;
+    private Map<SportEquipment, Integer> rentedUnits = new HashMap<>();
 
     public RentedUnits() {
     }
@@ -22,5 +23,20 @@ public class RentedUnits {
 
     public void setRentedUnits(Map<SportEquipment, Integer> rentedUnits) {
         this.rentedUnits = rentedUnits;
+    }
+
+    public void  addUnit(SportEquipment equipment, int quantity) {
+        if (rentedUnits != null) {
+            if (rentedUnits.containsKey(equipment)) {
+                int currentQuantity = rentedUnits.get(equipment);
+                rentedUnits.remove(equipment);
+                equipment.setQuantity(equipment.getQuantity() + currentQuantity);
+                rentedUnits.put(equipment, equipment.getQuantity());
+                return;
+            }
+        }
+        System.out.println(equipment == null);
+
+        rentedUnits.put(equipment, quantity);
     }
 }

@@ -54,6 +54,14 @@ public class SportEquipment {
         this.quantity = quantity;
     }
 
+    public void incQuantity() {
+        quantity++;
+    }
+
+    public void decQuantity() {
+        quantity--;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,5 +80,10 @@ public class SportEquipment {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + price;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }

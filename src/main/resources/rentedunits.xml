@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rentedUnits/>
+<rentedUnits>
+    <rentedUnits>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>70</price>
+                <quantity>3</quantity>
+                <title>Merida</title>
+            </key>
+            <value>2</value>
+        </entry>
+    </rentedUnits>
+</rentedUnits>

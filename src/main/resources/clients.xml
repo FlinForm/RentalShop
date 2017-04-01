@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <clients>
     <clients>
+        <availableItems>1</availableItems>
+        <firstItem>Merida</firstItem>
         <name>Pavel</name>
         <passport>MP2365476</passport>
+        <secondItem>Merida</secondItem>
         <surname>Davydenko</surname>
     </clients>
     <clients>
+        <availableItems>3</availableItems>
         <name>Kiryll</name>
         <passport>MP2369876</passport>
         <surname>Kosubouski</surname>
     </clients>
     <clients>
+        <availableItems>3</availableItems>
         <name>Alexander</name>
         <passport>MP3456345</passport>
         <surname>Kotlyarenko</surname>
     </clients>
     <clients>
+        <availableItems>3</availableItems>
         <name>Alexander</name>
         <passport>MP5684567</passport>
         <surname>Krutikov</surname>
