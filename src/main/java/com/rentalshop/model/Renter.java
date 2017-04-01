@@ -9,16 +9,41 @@ public class Renter implements Serializable {
     private String name;
     private String surname;
     private String passport;
-    private int age;
     private String firstItem;
     private String secondItem;
     private String thirdItem;
 
-    public Renter(String name, String surname, String passport, int age) {
+    public Renter() {
+    }
+
+    public Renter(String name, String surname, String passport) {
         this.name = name;
         this.surname = surname;
         this.passport = passport;
-        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
     }
 
     public String getFirstItem() {

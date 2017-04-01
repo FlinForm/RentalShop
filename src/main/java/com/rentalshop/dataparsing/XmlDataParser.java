@@ -1,7 +1,5 @@
 package com.rentalshop.dataparsing;
 
-import com.rentalshop.model.Shop;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -13,26 +11,24 @@ import java.io.File;
  */
 public class XmlDataParser implements DataParser{
     @Override
-    public Shop getData(String filename){
-        Shop shop = new Shop();
-        try {
-            JAXBContext context = JAXBContext.newInstance(Shop.class);
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            shop = (Shop) unmarshaller.unmarshal(new File(filename));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+    public Object getData(String filename, Object o){
 
-        return shop;
+        try {
+            JAXBContext context = JAXBContext.newInstance(o.getClass());
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            o = unmarshaller.unmarshal(new File(filename));
+        } catch (JAXBException e) {
+        }
+        return o;
     }
 
     @Override
-    public void writeData(String filename, Shop shop){
+    public void writeData(String filename, Object object){
         try {
-            JAXBContext context = JAXBContext.newInstance(Shop.class);
+            JAXBContext context = JAXBContext.newInstance(object.getClass());
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-                marshaller.marshal(shop, new File(filename));
+                marshaller.marshal(object, new File(filename));
         } catch (JAXBException e) {
             e.printStackTrace();
         }

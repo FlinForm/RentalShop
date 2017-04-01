@@ -2,9 +2,7 @@ package com.rentalshop.view;
 
 import com.rentalshop.controller.Controller;
 import com.rentalshop.dataparsing.XmlDataParser;
-import com.rentalshop.model.Category;
-import com.rentalshop.model.Shop;
-import com.rentalshop.model.SportEquipment;
+import com.rentalshop.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -26,15 +24,19 @@ import java.util.Map;
  */
 public class MainWindow {
     private Shop shop;
+    private Clients clients;
     private TableView view;
     private XmlDataParser parser;
     private ObservableList<SportEquipment> list;
+    RentedUnits units;
 
-    public MainWindow(Shop shop, XmlDataParser parser) {
+    public MainWindow(Shop shop, XmlDataParser parser, RentedUnits units, Clients clients) {
         this.shop = shop;
         view = new TableView();
         list = FXCollections.observableArrayList();
         this.parser = parser;
+        this.units = units;
+        this.clients = clients;
     }
 
     public Scene display() {
@@ -60,7 +62,7 @@ public class MainWindow {
             SportEquipment equipment = AddNewItemWindow.display();
             if (equipment != null) {
                 shop.addItem(equipment);
-                view.setItems(getOList());
+                view.setItems(setOList());
             }
         });
 
@@ -69,7 +71,7 @@ public class MainWindow {
         removeItemButton.setPrefSize(100, 25);
         removeItemButton.setOnAction(e -> {
             shop.removeItem((SportEquipment) view.getSelectionModel().getSelectedItem());
-            view.setItems(getOList());
+            view.setItems(setOList());
         });
 
         Button findItemButton = new Button();
@@ -100,27 +102,27 @@ public class MainWindow {
         titleText.setFont(new Font("Arial", 14));
 
         Hyperlink allGoods = new Hyperlink("All goods");
-        allGoods.setOnAction(e -> view.setItems(getOList()));
+        allGoods.setOnAction(e -> view.setItems(setOList()));
         allGoods.setVisited(true);
 
         Hyperlink bicycles = new Hyperlink("Bicycles");
-        bicycles.setOnAction(e -> view.setItems(getOList(Category.BICYCLE)));
+        bicycles.setOnAction(e -> view.setItems(setOList(Category.BICYCLE)));
         bicycles.setVisited(true);
 
         Hyperlink skates = new Hyperlink("Skates");
-        skates.setOnAction(e -> view.setItems(getOList(Category.SKATES)));
+        skates.setOnAction(e -> view.setItems(setOList(Category.SKATES)));
         skates.setVisited(true);
 
         Hyperlink rollerSkates = new Hyperlink("Roller skates");
-        rollerSkates.setOnAction(e -> view.setItems(getOList(Category.ROLLER_SKATES)));
+        rollerSkates.setOnAction(e -> view.setItems(setOList(Category.ROLLER_SKATES)));
         rollerSkates.setVisited(true);
 
         Hyperlink snowboards = new Hyperlink("Snowboards");
-        snowboards.setOnAction(e -> view.setItems(getOList(Category.SNOWBOARD)));
+        snowboards.setOnAction(e -> view.setItems(setOList(Category.SNOWBOARD)));
         snowboards.setVisited(true);
 
         Hyperlink skiing = new Hyperlink("Skiing");
-        skiing.setOnAction(event -> view.setItems(getOList(Category.SKIING)));
+        skiing.setOnAction(event -> view.setItems(setOList(Category.SKIING)));
         skiing.setVisited(true);
 
         vBox.getChildren().addAll(titleText, allGoods, bicycles, skates, rollerSkates, snowboards, skiing);
@@ -198,20 +200,26 @@ public class MainWindow {
 
         view.getColumns().addAll(categoryColumn, titleColumn, priceColumn, quantityColumn);
 
-        view.setItems(getOList());
+        view.setItems(setOList());
         return view;
     }
 
-    private ObservableList<SportEquipment> getOList() {
+    private ObservableList<SportEquipment> setOList() {
         list.clear();
+        if (shop.getGoods() == null) {
+            return list;
+        }
         for (Map.Entry entry : shop.getGoods().entrySet()) {
             list.add((SportEquipment) entry.getKey());
         }
         return list;
     }
 
-    private ObservableList<SportEquipment> getOList(Category category) {
+    private ObservableList<SportEquipment> setOList(Category category) {
         list.clear();
+        if (shop.getGoods() == null) {
+            return list;
+        }
         for (Map.Entry entry : shop.getGoods().entrySet()) {
             SportEquipment equipment = (SportEquipment) entry.getKey();
             if (equipment.getCategory().equals(category)) {
@@ -223,6 +231,8 @@ public class MainWindow {
 
     private void save() {
         parser.writeData("src/main/resources/equipment.xml", shop);
+        parser.writeData("src/main/resources/rentedunits.xml", units);
+        parser.writeData("src/main/resources/clients.xml", clients);
     }
 
 }

@@ -1,9 +1,8 @@
 package com.rentalshop.view;
 
 import com.rentalshop.controller.Controller;
-import com.rentalshop.model.Category;
-import com.rentalshop.model.Shop;
-import com.rentalshop.model.SportEquipment;
+import com.rentalshop.dataparsing.XmlDataParser;
+import com.rentalshop.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -20,20 +19,24 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.Map;
-
 /**
  * Created by Pavel Davydenko on 01.04.2017.
  */
 public class ClientsWindow {
     private Shop shop;
+    Clients clients;
     private TableView view;
-    private ObservableList<SportEquipment> list;
+    private XmlDataParser parser;
+    private RentedUnits units;
+    private ObservableList<Renter> list;
 
-    public ClientsWindow(Shop shop) {
+    public ClientsWindow(Shop shop, XmlDataParser parser, RentedUnits units, Clients clients) {
         this.shop = shop;
         view = new TableView();
         list = FXCollections.observableArrayList();
+        this.parser = parser;
+        this.units = units;
+        this.clients = clients;
 
     }
 
@@ -61,12 +64,22 @@ public class ClientsWindow {
         Button addClientButton = new Button();
         addClientButton.setText("Add client");
         addClientButton.setPrefSize(100, 25);
+        addClientButton.setOnAction(e -> {
+            Renter renter = AddClientWindow.display();
+            if (renter != null) {
+                clients.AddClient(renter);
+                view.setItems(setOList());
+            }
+        });
 
 
         Button removeClientButton = new Button();
         removeClientButton.setText("Remove client");
         removeClientButton.setPrefSize(100, 25);
-
+        removeClientButton.setOnAction(e -> {
+            clients.getClients().remove(view.getSelectionModel().getSelectedItem());
+            view.setItems(setOList());
+        });
 
 
         hBox.getChildren().addAll(addClientButton, removeClientButton);
@@ -131,52 +144,54 @@ public class ClientsWindow {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         TableColumn<SportEquipment, String> surnameColumn = new TableColumn<>("Surname");
-        surnameColumn.setMinWidth(200);
+        surnameColumn.setMinWidth(120);
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
 
         TableColumn<SportEquipment, String> passportColumn = new TableColumn<>("Passport");
         passportColumn.setMinWidth(100);
         passportColumn.setCellValueFactory(new PropertyValueFactory<>("passport"));
 
-        TableColumn<SportEquipment, Integer> ageColumn = new TableColumn<>("Age");
-        ageColumn.setMinWidth(100);
-        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
-
         TableColumn<SportEquipment, String> firstItemColumn = new TableColumn<>("Rented item");
-        firstItemColumn.setMinWidth(100);
-        firstItemColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        firstItemColumn.setMinWidth(130);
+        firstItemColumn.setCellValueFactory(new PropertyValueFactory<>("firstItem"));
 
         TableColumn<SportEquipment, String> secondItemColumn = new TableColumn<>("Rented item");
-        secondItemColumn.setMinWidth(100);
-        secondItemColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        secondItemColumn.setMinWidth(130);
+        secondItemColumn.setCellValueFactory(new PropertyValueFactory<>("secondItem"));
 
         TableColumn<SportEquipment, String> thirdItemColumn = new TableColumn<>("Rented item");
-        thirdItemColumn.setMinWidth(100);
-        thirdItemColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        thirdItemColumn.setMinWidth(130);
+        thirdItemColumn.setCellValueFactory(new PropertyValueFactory<>("thirdItem"));
 
 
-        view.getColumns().addAll(nameColumn, surnameColumn, passportColumn, thirdItemColumn);
+        view.getColumns().addAll(nameColumn, surnameColumn, passportColumn, firstItemColumn, secondItemColumn,
+                thirdItemColumn);
 
-        view.setItems(getOList());
+        view.setItems(setOList());
         return view;
     }
 
-    private ObservableList<SportEquipment> getOList() {
+    private ObservableList<Renter> setOList() {
         list.clear();
-        for (Map.Entry entry : shop.getGoods().entrySet()) {
-            list.add((SportEquipment) entry.getKey());
+        if (clients.getClients() == null) {
+            System.out.println(units.getRentedUnits() == null);
+            return list;
         }
+        list.addAll(clients.getClients());
         return list;
     }
 
-    private ObservableList<SportEquipment> getOList(Category category) {
-        list.clear();
-        for (Map.Entry entry : shop.getGoods().entrySet()) {
+    private ObservableList<Renter> setOList(Category category) {
+        /*list.clear();
+        if (clients.getClients() == null) {
+            return list;
+        }
+        for (Map.Entry entry : units.getRentedUnits().entrySet()) {
             SportEquipment equipment = (SportEquipment) entry.getKey();
             if (equipment.getCategory().equals(category)) {
                 list.add((SportEquipment) entry.getKey());
             }
-        }
+        }*/
         return list;
     }
 
@@ -190,27 +205,27 @@ public class ClientsWindow {
         titleText.setFont(new Font("Arial", 14));
 
         Hyperlink allGoods = new Hyperlink("All goods");
-        //allGoods.setOnAction(e -> view.setItems(getOList()));
+        //allGoods.setOnAction(e -> view.setItems(setOList()));
         allGoods.setVisited(true);
 
         Hyperlink bicycles = new Hyperlink("Bicycles");
-        //bicycles.setOnAction(e -> view.setItems(getOList(Category.BICYCLE)));
+        //bicycles.setOnAction(e -> view.setItems(setOList(Category.BICYCLE)));
         bicycles.setVisited(true);
 
         Hyperlink skates = new Hyperlink("Skates");
-        //skates.setOnAction(e -> view.setItems(getOList(Category.SKATES)));
+        //skates.setOnAction(e -> view.setItems(setOList(Category.SKATES)));
         skates.setVisited(true);
 
         Hyperlink rollerSkates = new Hyperlink("Roller skates");
-        //rollerSkates.setOnAction(e -> view.setItems(getOList(Category.ROLLER_SKATES)));
+        //rollerSkates.setOnAction(e -> view.setItems(setOList(Category.ROLLER_SKATES)));
         rollerSkates.setVisited(true);
 
         Hyperlink snowboards = new Hyperlink("Snowboards");
-        //snowboards.setOnAction(e -> view.setItems(getOList(Category.SNOWBOARD)));
+        //snowboards.setOnAction(e -> view.setItems(setOList(Category.SNOWBOARD)));
         snowboards.setVisited(true);
 
         Hyperlink skiing = new Hyperlink("Skiing");
-        //skiing.setOnAction(event -> view.setItems(getOList(Category.SKIING)));
+        //skiing.setOnAction(event -> view.setItems(setOList(Category.SKIING)));
         skiing.setVisited(true);
 
         vBox.getChildren().addAll(titleText, allGoods, bicycles, skates, rollerSkates, snowboards, skiing);
@@ -218,6 +233,8 @@ public class ClientsWindow {
     }
 
     private void save() {
-
+        parser.writeData("src/main/resources/equipment.xml", shop);
+        parser.writeData("src/main/resources/rentedunits.xml", units);
+        parser.writeData("src/main/resources/clients.xml", clients);
     }
 }

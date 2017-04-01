@@ -1,14 +1,12 @@
 package com.rentalshop.dataparsing;
 
-import com.rentalshop.model.Shop;
-
 /**
  * Created by Pavel Davydenko on 31.03.2017.
  */
 public interface DataParser {
 
-    Shop getData(String filename);
+    Object getData(String filename, Object o);
 
-    void writeData(String filename, Shop shop);
+    void writeData(String filename, Object o);
 
 }

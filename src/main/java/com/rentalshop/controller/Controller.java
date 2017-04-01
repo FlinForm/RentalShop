@@ -1,6 +1,8 @@
 package com.rentalshop.controller;
 
 import com.rentalshop.dataparsing.XmlDataParser;
+import com.rentalshop.model.Clients;
+import com.rentalshop.model.RentedUnits;
 import com.rentalshop.model.Shop;
 import com.rentalshop.view.ClientsWindow;
 import com.rentalshop.view.MainWindow;
@@ -11,16 +13,28 @@ import javafx.stage.Stage;
  * Created by Pavel Davydenko on 30.03.2017.
  */
 public class Controller extends Application {
-    private static Stage primaryStage;
+    private static Stage window;
     private static MainWindow mainWindow;
     private static ClientsWindow clientsWindow;
+    private XmlDataParser parser;
+    private RentedUnits units;
+    private Clients clients;
+    private Shop shop;
+
 
     public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
-        XmlDataParser parser = new XmlDataParser();
-        Shop shop = parser.getData("src/main/resources/equipment.xml");
-        mainWindow = new MainWindow(shop, parser);
-        clientsWindow = new ClientsWindow(shop);
+        window = primaryStage;
+        parser = new XmlDataParser();
+        units = new RentedUnits();
+        clients = new Clients();
+        shop = new Shop();
+        units = new RentedUnits();
+        clients = new Clients();
+        units = (RentedUnits) parser.getData("src/main/resources/rentedunits.xml", units);
+        clients = (Clients) parser.getData("src/main/resources/clients.xml", clients);
+        shop = (Shop) parser.getData("src/main/resources/equipment.xml", shop);
+        mainWindow = new MainWindow(shop, parser, units, clients);
+        clientsWindow = new ClientsWindow(shop, parser, units, clients);
 
 
 
@@ -31,11 +45,12 @@ public class Controller extends Application {
         primaryStage.show();
     }
 
+
     public static void setMainScene() {
-        primaryStage.setScene(mainWindow.display());
+        window.setScene(mainWindow.display());
     }
 
     public static void setClientScene() {
-        primaryStage.setScene(clientsWindow.display());
+        window.setScene(clientsWindow.display());
     }
 }
