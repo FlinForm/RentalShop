@@ -28,7 +28,7 @@ public class MainWindow {
     private TableView view;
     private XmlDataParser parser;
     private ObservableList<SportEquipment> list;
-    RentedUnits units;
+    private RentedUnits units;
 
     public MainWindow(Shop shop, XmlDataParser parser, RentedUnits units, Clients clients) {
         this.shop = shop;
@@ -62,7 +62,7 @@ public class MainWindow {
             SportEquipment equipment = AddNewItemWindow.display();
             if (equipment != null) {
                 shop.addItem(equipment);
-                view.setItems(setOList());
+                view.setItems(setOList(shop.getGoods()));
             }
         });
 
@@ -71,7 +71,7 @@ public class MainWindow {
         removeItemButton.setPrefSize(100, 25);
         removeItemButton.setOnAction(e -> {
             shop.removeItem((SportEquipment) view.getSelectionModel().getSelectedItem());
-            view.setItems(setOList());
+            view.setItems(setOList(shop.getGoods()));
         });
 
         Button findItemButton = new Button();
@@ -80,8 +80,15 @@ public class MainWindow {
 
         ChoiceBox<String> choiceBox = new ChoiceBox();
         choiceBox.setPrefWidth(100);
-        choiceBox.getItems().addAll("All equipment", "Rented", "Available");
-        choiceBox.setValue("All equipment");
+        choiceBox.getItems().addAll( "Available", "Rented");
+        choiceBox.setValue("Available");
+        choiceBox.setOnAction(e -> {
+            if (choiceBox.getValue().equals("Available")) {
+                setOList(shop.getGoods());
+            } else {
+                setOList(units.getRentedUnits());
+            }
+        });
 
         Button rentItemButton = new Button();
         rentItemButton.setText("Rent item");
@@ -103,7 +110,7 @@ public class MainWindow {
         titleText.setFont(new Font("Arial", 14));
 
         Hyperlink allGoods = new Hyperlink("All goods");
-        allGoods.setOnAction(e -> view.setItems(setOList()));
+        allGoods.setOnAction(e -> view.setItems(setOList(shop.getGoods())));
         allGoods.setVisited(true);
 
         Hyperlink bicycles = new Hyperlink("Bicycles");
@@ -201,16 +208,16 @@ public class MainWindow {
 
         view.getColumns().addAll(categoryColumn, titleColumn, priceColumn, quantityColumn);
 
-        view.setItems(setOList());
+        view.setItems(setOList(shop.getGoods()));
         return view;
     }
 
-    private ObservableList<SportEquipment> setOList() {
+    private ObservableList<SportEquipment> setOList(Map<SportEquipment, Integer> map) {
         list.clear();
-        if (shop.getGoods() == null) {
+        if (map == null) {
             return list;
         }
-        for (Map.Entry entry : shop.getGoods().entrySet()) {
+        for (Map.Entry entry : map.entrySet()) {
             list.add((SportEquipment) entry.getKey());
         }
         return list;
@@ -261,7 +268,7 @@ public class MainWindow {
 
         units.addUnit(equipment, quantityRentItems);
         shop.refreshItem(equipment);
-        setOList();
+        setOList(shop.getGoods());
     }
 
 

@@ -26,7 +26,7 @@ public class RentedUnits {
     }
 
     public void  addUnit(SportEquipment equipment, int quantity) {
-        if (rentedUnits != null) {
+        equipment.setQuantity(quantity);
             if (rentedUnits.containsKey(equipment)) {
                 int currentQuantity = rentedUnits.get(equipment);
                 rentedUnits.remove(equipment);
@@ -34,9 +34,9 @@ public class RentedUnits {
                 rentedUnits.put(equipment, equipment.getQuantity());
                 return;
             }
-        }
         System.out.println(equipment == null);
 
         rentedUnits.put(equipment, quantity);
     }
+
 }
