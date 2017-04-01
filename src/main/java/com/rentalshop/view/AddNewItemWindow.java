@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 /**
  * Created by Pavel Davydenko on 31.03.2017.
  */
-public class AddNewItemBox {
+public class AddNewItemWindow {
     private static SportEquipment equipment;
 
     public static SportEquipment display() {

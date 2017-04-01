@@ -1,5 +1,6 @@
 package com.rentalshop.view;
 
+import com.rentalshop.controller.Controller;
 import com.rentalshop.dataparsing.XmlDataParser;
 import com.rentalshop.model.Category;
 import com.rentalshop.model.Shop;
@@ -36,21 +37,19 @@ public class MainWindow {
         this.parser = parser;
     }
 
-    public Scene getMainWindow() {
+    public Scene display() {
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(addTopHBox());
         borderPane.setLeft(addLeftVBox());
         borderPane.setBottom(addBottomHBox());
         borderPane.setCenter(addCenterView());
-
-
         return new Scene(borderPane);
     }
 
     private HBox addTopHBox(){
         HBox hBox = new HBox();
-        hBox.setPadding(new Insets(25, 100, 25, 250));
-        hBox.setSpacing(50);
+        hBox.setPadding(new Insets(25, 80, 25, 160));
+        hBox.setSpacing(20);
         hBox.setStyle("-fx-background-color: #4a4a4a");
 
 
@@ -58,7 +57,7 @@ public class MainWindow {
         addItemButton.setText("Add item");
         addItemButton.setPrefSize(100, 25);
         addItemButton.setOnAction(e -> {
-            SportEquipment equipment = AddNewItemBox.display();
+            SportEquipment equipment = AddNewItemWindow.display();
             if (equipment != null) {
                 shop.addItem(equipment);
                 view.setItems(getOList());
@@ -97,7 +96,7 @@ public class MainWindow {
         vBox.setSpacing(20);
 
         Text titleText = new Text();
-        titleText.setText("Sport Inventory:");
+        titleText.setText("Sport Inventory:   ");
         titleText.setFont(new Font("Arial", 14));
 
         Hyperlink allGoods = new Hyperlink("All goods");
@@ -136,13 +135,12 @@ public class MainWindow {
         rightHBox.setAlignment(Pos.CENTER_RIGHT);
 
         HBox leftHBOX = new HBox();
-        leftHBOX.setPadding(new Insets(25,25,25,125));
+        leftHBOX.setPadding(new Insets(25,25,25,20));
         leftHBOX.setSpacing(30);
         leftHBOX.setStyle("-fx-background-color: #4a4a4a");
         leftHBOX.setAlignment(Pos.CENTER_LEFT);
 
         HBox mergeHBox = new HBox();
-        mergeHBox.setPadding(new Insets(25,25,25,25));
         mergeHBox.setSpacing(350);
         mergeHBox.setStyle("-fx-background-color: #4a4a4a");
         mergeHBox.setAlignment(Pos.CENTER);
@@ -154,6 +152,7 @@ public class MainWindow {
         Button clientButton = new Button();
         clientButton.setText("Clients");
         clientButton.setPrefSize(120, 25);
+        clientButton.setOnAction(e -> Controller.setClientScene());
 
 
         Button saveButton = new Button();
@@ -178,22 +177,23 @@ public class MainWindow {
 
     private TableView addCenterView() {
         view = new TableView();
+        view.setPrefSize(600, 450);
 
-        TableColumn<SportEquipment, Category> categoryColumn = new TableColumn<SportEquipment, Category>("Category");
+        TableColumn<SportEquipment, Category> categoryColumn = new TableColumn<>("Category");
         categoryColumn.setMinWidth(100);
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<SportEquipment, Category>("category"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
 
-        TableColumn<SportEquipment, String> titleColumn = new TableColumn<SportEquipment, String>("Title");
+        TableColumn<SportEquipment, String> titleColumn = new TableColumn<>("Title");
         titleColumn.setMinWidth(200);
-        titleColumn.setCellValueFactory(new PropertyValueFactory<SportEquipment, String>("title"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
-        TableColumn<SportEquipment, Integer> priceColumn = new TableColumn<SportEquipment, Integer>("Price");
+        TableColumn<SportEquipment, Integer> priceColumn = new TableColumn<>("Price");
         priceColumn.setMinWidth(100);
-        priceColumn.setCellValueFactory(new PropertyValueFactory<SportEquipment, Integer>("price"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        TableColumn<SportEquipment, Integer> quantityColumn = new TableColumn<SportEquipment, Integer>("Quantity");
+        TableColumn<SportEquipment, Integer> quantityColumn = new TableColumn<>("Quantity");
         quantityColumn.setMinWidth(100);
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<SportEquipment, Integer>("quantity"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
 
         view.getColumns().addAll(categoryColumn, titleColumn, priceColumn, quantityColumn);

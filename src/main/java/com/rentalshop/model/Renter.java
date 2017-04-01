@@ -10,13 +10,38 @@ public class Renter implements Serializable {
     private String surname;
     private String passport;
     private int age;
-    private SportEquipment[] equipment;
+    private String firstItem;
+    private String secondItem;
+    private String thirdItem;
 
     public Renter(String name, String surname, String passport, int age) {
         this.name = name;
         this.surname = surname;
         this.passport = passport;
         this.age = age;
-        equipment = new SportEquipment[3];
+    }
+
+    public String getFirstItem() {
+        return firstItem;
+    }
+
+    public void setFirstItem(String firstItem) {
+        this.firstItem = firstItem;
+    }
+
+    public String getSecondItem() {
+        return secondItem;
+    }
+
+    public void setSecondItem(String secondItem) {
+        this.secondItem = secondItem;
+    }
+
+    public String getThirdItem() {
+        return thirdItem;
+    }
+
+    public void setThirdItem(String thirdItem) {
+        this.thirdItem = thirdItem;
     }
 }
