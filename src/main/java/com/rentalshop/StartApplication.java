@@ -5,7 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * Entry point into the application
  */
 public class StartApplication extends Application{
     public static void main(String[] args) {

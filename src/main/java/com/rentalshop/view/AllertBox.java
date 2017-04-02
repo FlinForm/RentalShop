@@ -12,7 +12,8 @@ import javafx.stage.Stage;
 
 
 /**
- * Created by Pavel Davydenko on 31.03.2017.
+ * Window that displays alert message. String parameter
+ * of "displayMessage" is the message you want to show.
  */
 public class AllertBox {
 

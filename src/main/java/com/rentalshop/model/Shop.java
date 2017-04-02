@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * This class is a storage of units, available in rental shop.
+ * The second parameter of Hashmap is a number of available item units.
  */
 @XmlType(name = "shop")
 @XmlRootElement

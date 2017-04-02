@@ -3,7 +3,7 @@ package com.rentalshop.model;
 import java.io.Serializable;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * Describes a renter.
  */
 public class Renter implements Serializable {
     private String name;
@@ -16,7 +16,6 @@ public class Renter implements Serializable {
 
     public Renter() {
     }
-
 
     public String getName() {
         return name;

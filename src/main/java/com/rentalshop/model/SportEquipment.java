@@ -1,7 +1,7 @@
 package com.rentalshop.model;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * Describes item unit in rental shop.
  */
 
 public class SportEquipment {
