@@ -69,6 +69,7 @@ public class AddClientWindow {
             renter.setName(name.getText());
             renter.setSurname(surname.getText());
             renter.setPassport(passport.getText());
+            renter.setAvailableItems(3);
             window.close();
         });
         noButton.setOnAction(event -> {
@@ -76,8 +77,7 @@ public class AddClientWindow {
             window.close();
         });
 
-        Scene scene = new Scene(pane);
-        window.setScene(scene);
+        window.setScene(new Scene(pane));
         window.showAndWait();
         return renter;
     }

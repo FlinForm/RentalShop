@@ -2,32 +2,47 @@
 <clients>
     <clients>
         <availableItems>0</availableItems>
-        <firstItem>Specialized</firstItem>
+        <firstItem>BICYCLE Specialized</firstItem>
         <name>Pavel</name>
         <passport>MP2365476</passport>
-        <secondItem>Specialized</secondItem>
+        <secondItem>BICYCLE Specialized</secondItem>
         <surname>Davydenko</surname>
-        <thirdItem>Specialized</thirdItem>
+        <thirdItem>BICYCLE Specialized</thirdItem>
     </clients>
     <clients>
         <availableItems>1</availableItems>
-        <firstItem>Merida</firstItem>
+        <firstItem>BICYCLE Merida</firstItem>
         <name>Kiryll</name>
         <passport>MP2369876</passport>
-        <secondItem>Merida</secondItem>
+        <secondItem>BICYCLE Merida</secondItem>
         <surname>Kosubouski</surname>
     </clients>
     <clients>
-        <availableItems>2</availableItems>
-        <firstItem>CCM</firstItem>
+        <availableItems>1</availableItems>
+        <firstItem>BICYCLE Specialized</firstItem>
         <name>Alexander</name>
         <passport>MP3456345</passport>
+        <secondItem>BICYCLE Specialized</secondItem>
         <surname>Kotlyarenko</surname>
     </clients>
     <clients>
-        <availableItems>3</availableItems>
+        <availableItems>2</availableItems>
+        <firstItem>SNOWBOARD NewBoard</firstItem>
         <name>Alexander</name>
         <passport>MP5684567</passport>
         <surname>Krutikov</surname>
+    </clients>
+    <clients>
+        <availableItems>2</availableItems>
+        <firstItem>BICYCLE Trek</firstItem>
+        <name>Nika</name>
+        <passport>MP4769876</passport>
+        <surname>Malinouskaya</surname>
+    </clients>
+    <clients>
+        <availableItems>3</availableItems>
+        <name>Dmitry</name>
+        <passport>MP3463213</passport>
+        <surname>Ischenko</surname>
     </clients>
 </clients>

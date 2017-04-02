@@ -34,9 +34,32 @@ public class RentedUnits {
                 rentedUnits.put(equipment, equipment.getQuantity());
                 return;
             }
-        System.out.println(equipment == null);
-
         rentedUnits.put(equipment, quantity);
+    }
+
+    public void  addUnit(SportEquipment equipment) {
+        if (rentedUnits.containsKey(equipment)) {
+            int currentQuantity = rentedUnits.get(equipment);
+            rentedUnits.remove(equipment);
+            equipment.setQuantity(equipment.getQuantity() + currentQuantity);
+            rentedUnits.put(equipment, equipment.getQuantity());
+            return;
+        }
+        rentedUnits.put(equipment, equipment.getQuantity());
+    }
+
+    public SportEquipment getUnitForName(String name) {
+        SportEquipment equipment;
+        String[] eqName = name.split(" ");
+        for (Map.Entry<SportEquipment, Integer> entry : rentedUnits.entrySet()) {
+            equipment = entry.getKey();
+            if (eqName[0].equals(equipment.getCategory().toString())) {
+                if (eqName[1].equals(equipment.getTitle())) {
+                    return equipment;
+                }
+            }
+        }
+        return null;
     }
 
 }

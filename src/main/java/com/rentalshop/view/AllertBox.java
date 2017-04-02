@@ -38,8 +38,7 @@ public class AllertBox {
         box.getChildren().addAll(label, okButton);
 
 
-        Scene scene = new Scene(box);
-        window.setScene(scene);
+        window.setScene(new Scene(box));
         window.showAndWait();
     }
 }

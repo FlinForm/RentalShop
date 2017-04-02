@@ -24,12 +24,11 @@ public class RentItemWindow {
         // Creating window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Add new client");
-
+        window.setTitle("Rent item");
         window.setResizable(false);
 
-        // Creating window elements
 
+        // Creating window elements
         Label label1 = new Label();
         label1.setText("Select Rentor:");
 
@@ -75,8 +74,7 @@ public class RentItemWindow {
         });
         noButton.setOnAction(event -> window.close());
 
-        Scene scene = new Scene(pane);
-        window.setScene(scene);
+        window.setScene(new Scene(pane));
         window.showAndWait();
         return returnedData;
     }

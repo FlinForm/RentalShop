@@ -17,15 +17,6 @@ public class Renter implements Serializable {
     public Renter() {
     }
 
-    public Renter(String name, String surname, String passport) {
-        this.name = name;
-        this.surname = surname;
-        this.passport = passport;
-        firstItem = null;
-        secondItem = null;
-        thirdItem = null;
-        availableItems = 3;
-    }
 
     public String getName() {
         return name;

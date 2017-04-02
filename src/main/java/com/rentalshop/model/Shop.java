@@ -26,6 +26,7 @@ public class Shop {
         this.goods = goods;
     }
 
+
     public void addItem(SportEquipment equipment) {
         if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
             return;

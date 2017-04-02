@@ -99,8 +99,7 @@ public class AddNewItemWindow {
             window.close();
         });
 
-        Scene scene = new Scene(pane);
-        window.setScene(scene);
+        window.setScene(new Scene(pane));
         window.showAndWait();
         return equipment;
     }

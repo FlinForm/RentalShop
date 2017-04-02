@@ -3,30 +3,30 @@
     <goods>
         <entry>
             <key>
-                <category>SNOWBOARD</category>
-                <price>70</price>
-                <quantity>3</quantity>
-                <title>NewBoard</title>
+                <category>ROLLER_SKATES</category>
+                <price>55</price>
+                <quantity>2</quantity>
+                <title>Nike_Bauer</title>
             </key>
-            <value>3</value>
-        </entry>
-        <entry>
-            <key>
-                <category>SKIING</category>
-                <price>100</price>
-                <quantity>1</quantity>
-                <title>K2</title>
-            </key>
-            <value>1</value>
+            <value>2</value>
         </entry>
         <entry>
             <key>
                 <category>BICYCLE</category>
-                <price>1000</price>
+                <price>70</price>
                 <quantity>2</quantity>
-                <title>Canondale</title>
+                <title>Merida</title>
             </key>
             <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>50</price>
+                <quantity>10</quantity>
+                <title>Graf</title>
+            </key>
+            <value>10</value>
         </entry>
         <entry>
             <key>
@@ -41,35 +41,8 @@
             <key>
                 <category>BICYCLE</category>
                 <price>50</price>
-                <quantity>3</quantity>
-                <title>Specialized</title>
-            </key>
-            <value>3</value>
-        </entry>
-        <entry>
-            <key>
-                <category>ROLLER_SKATES</category>
-                <price>55</price>
-                <quantity>2</quantity>
-                <title>Nike_Bauer</title>
-            </key>
-            <value>2</value>
-        </entry>
-        <entry>
-            <key>
-                <category>BICYCLE</category>
-                <price>50</price>
                 <quantity>2</quantity>
                 <title>GT</title>
-            </key>
-            <value>2</value>
-        </entry>
-        <entry>
-            <key>
-                <category>ROLLER_SKATES</category>
-                <price>100</price>
-                <quantity>2</quantity>
-                <title>Bauer</title>
             </key>
             <value>2</value>
         </entry>
@@ -84,30 +57,57 @@
         </entry>
         <entry>
             <key>
-                <category>SKATES</category>
+                <category>BICYCLE</category>
                 <price>50</price>
-                <quantity>10</quantity>
-                <title>Graf</title>
+                <quantity>5</quantity>
+                <title>Specialized</title>
             </key>
-            <value>10</value>
+            <value>5</value>
         </entry>
         <entry>
             <key>
-                <category>BICYCLE</category>
+                <category>SNOWBOARD</category>
                 <price>70</price>
+                <quantity>1</quantity>
+                <title>NewBoard</title>
+            </key>
+            <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>ROLLER_SKATES</category>
+                <price>100</price>
                 <quantity>2</quantity>
-                <title>Merida</title>
+                <title>Bauer</title>
             </key>
             <value>2</value>
         </entry>
         <entry>
             <key>
                 <category>BICYCLE</category>
+                <price>1000</price>
+                <quantity>2</quantity>
+                <title>Canondale</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKIING</category>
+                <price>100</price>
+                <quantity>1</quantity>
+                <title>K2</title>
+            </key>
+            <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
                 <price>80</price>
-                <quantity>4</quantity>
+                <quantity>1</quantity>
                 <title>Trek</title>
             </key>
-            <value>4</value>
+            <value>1</value>
         </entry>
     </goods>
 </shop>

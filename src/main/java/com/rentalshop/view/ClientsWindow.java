@@ -9,15 +9,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 /**
  * Created by Pavel Davydenko on 01.04.2017.
@@ -41,15 +37,10 @@ public class ClientsWindow {
     }
 
     public Scene display(){
-
-
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(addTopHBox());
         borderPane.setBottom(addBottomHBox());
-        borderPane.setLeft(addLeftVBox());
         borderPane.setCenter(addCenterView());
-
-
         return new Scene(borderPane);
     }
 
@@ -79,8 +70,16 @@ public class ClientsWindow {
             removeClient();
         });
 
+        Button returnItemsButton = new Button();
+        returnItemsButton.setText("Return items");
+        returnItemsButton.setPrefSize(100, 25);
+        returnItemsButton.setOnAction(e -> {
+            returnItem((Renter) view.getSelectionModel().getSelectedItem());
 
-        hBox.getChildren().addAll(addClientButton, removeClientButton);
+        });
+
+
+        hBox.getChildren().addAll(addClientButton, removeClientButton, returnItemsButton);
 
         return hBox;
     }
@@ -150,15 +149,15 @@ public class ClientsWindow {
         passportColumn.setCellValueFactory(new PropertyValueFactory<>("passport"));
 
         TableColumn<SportEquipment, String> firstItemColumn = new TableColumn<>("Rented item");
-        firstItemColumn.setMinWidth(130);
+        firstItemColumn.setMinWidth(170);
         firstItemColumn.setCellValueFactory(new PropertyValueFactory<>("firstItem"));
 
         TableColumn<SportEquipment, String> secondItemColumn = new TableColumn<>("Rented item");
-        secondItemColumn.setMinWidth(130);
+        secondItemColumn.setMinWidth(170);
         secondItemColumn.setCellValueFactory(new PropertyValueFactory<>("secondItem"));
 
         TableColumn<SportEquipment, String> thirdItemColumn = new TableColumn<>("Rented item");
-        thirdItemColumn.setMinWidth(130);
+        thirdItemColumn.setMinWidth(170);
         thirdItemColumn.setCellValueFactory(new PropertyValueFactory<>("thirdItem"));
 
 
@@ -179,57 +178,6 @@ public class ClientsWindow {
         return list;
     }
 
-    private ObservableList<Renter> setOList(Category category) {
-        /*list.clear();
-        if (clients.getClients() == null) {
-            return list;
-        }
-        for (Map.Entry entry : units.getRentedUnits().entrySet()) {
-            SportEquipment equipment = (SportEquipment) entry.getKey();
-            if (equipment.getCategory().equals(category)) {
-                list.add((SportEquipment) entry.getKey());
-            }
-        }*/
-        return list;
-    }
-
-    private VBox addLeftVBox() {
-        VBox vBox = new VBox();
-        vBox.setPadding(new Insets(25));
-        vBox.setSpacing(20);
-
-        Text titleText = new Text();
-        titleText.setText("Rented Inventory:");
-        titleText.setFont(new Font("Arial", 14));
-
-        Hyperlink allGoods = new Hyperlink("All goods");
-        //allGoods.setOnAction(e -> view.setItems(setOList()));
-        allGoods.setVisited(true);
-
-        Hyperlink bicycles = new Hyperlink("Bicycles");
-        //bicycles.setOnAction(e -> view.setItems(setOList(Category.BICYCLE)));
-        bicycles.setVisited(true);
-
-        Hyperlink skates = new Hyperlink("Skates");
-        //skates.setOnAction(e -> view.setItems(setOList(Category.SKATES)));
-        skates.setVisited(true);
-
-        Hyperlink rollerSkates = new Hyperlink("Roller skates");
-        //rollerSkates.setOnAction(e -> view.setItems(setOList(Category.ROLLER_SKATES)));
-        rollerSkates.setVisited(true);
-
-        Hyperlink snowboards = new Hyperlink("Snowboards");
-        //snowboards.setOnAction(e -> view.setItems(setOList(Category.SNOWBOARD)));
-        snowboards.setVisited(true);
-
-        Hyperlink skiing = new Hyperlink("Skiing");
-        //skiing.setOnAction(event -> view.setItems(setOList(Category.SKIING)));
-        skiing.setVisited(true);
-
-        vBox.getChildren().addAll(titleText, allGoods, bicycles, skates, rollerSkates, snowboards, skiing);
-        return vBox;
-    }
-
     private void removeClient() {
         for (int i = 0; i < clients.getClients().size(); i++) {
             if (clients.getClients().get(i).equals(view.getSelectionModel().getSelectedItem())) {
@@ -241,6 +189,15 @@ public class ClientsWindow {
         }
         clients.getClients().remove(view.getSelectionModel().getSelectedItem());
         view.setItems(setOList());
+    }
+
+    private void returnItem(Renter renter) {
+        if (renter == null) {
+            AllertBox.displayMessage("Please, select a renter!");
+            return;
+        }
+        String[] returningItems = ReturnItemWindow.display(renter);
+        System.out.println(returningItems[0] + " " + returningItems[1] + " " + returningItems[2]);
     }
 
     private void save() {
