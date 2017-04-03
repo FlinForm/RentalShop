@@ -30,7 +30,7 @@ public class RentItemWindow {
 
         // Creating window elements
         Label label1 = new Label();
-        label1.setText("Select Rentor:");
+        label1.setText("Select a rentor:");
 
         Label label2 = new Label();
         label2.setText("Number of items:");

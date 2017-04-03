@@ -37,13 +37,19 @@ public class RentedUnits {
         rentedUnits.put(equipment, quantity);
     }
 
-    public void  addUnit(SportEquipment equipment) {
+    public void removeUnit(String returningItem) {
+        SportEquipment equipment = getUnitForName(returningItem);
         if (rentedUnits.containsKey(equipment)) {
             int currentQuantity = rentedUnits.get(equipment);
-            rentedUnits.remove(equipment);
-            equipment.setQuantity(equipment.getQuantity() + currentQuantity);
-            rentedUnits.put(equipment, equipment.getQuantity());
-            return;
+            if (currentQuantity > 0) {
+                rentedUnits.remove(equipment);
+                equipment.setQuantity(currentQuantity - 1);
+                rentedUnits.put(equipment, equipment.getQuantity());
+                return;
+            }
+            if (rentedUnits.get(equipment).equals(0)) {
+                rentedUnits.remove(equipment);
+            }
         }
         rentedUnits.put(equipment, equipment.getQuantity());
     }

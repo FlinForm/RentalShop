@@ -62,7 +62,7 @@ public class MainWindow {
         addItemButton.setOnAction(e -> {
             SportEquipment equipment = AddNewItemWindow.display();
             if (equipment != null) {
-                shop.addItem(equipment);
+                shop.addNewItem(equipment);
                 view.setItems(setOList(shop.getGoods()));
             }
         });

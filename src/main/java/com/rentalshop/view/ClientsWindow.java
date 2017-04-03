@@ -171,7 +171,6 @@ public class ClientsWindow {
     private ObservableList<Renter> setOList() {
         list.clear();
         if (clients.getClients() == null) {
-            System.out.println(units.getRentedUnits() == null);
             return list;
         }
         list.addAll(clients.getClients());
@@ -198,6 +197,28 @@ public class ClientsWindow {
         }
         String[] returningItems = ReturnItemWindow.display(renter);
         System.out.println(returningItems[0] + " " + returningItems[1] + " " + returningItems[2]);
+
+        if (returningItems[0] != null) {
+            renter.setFirstItem(null);
+            units.removeUnit(returningItems[0]);
+            shop.returnRentedItem(shop.getUnitForName(returningItems[0]));
+        }
+
+        if (returningItems[1] != null) {
+            renter.setSecondItem(null);
+            units.removeUnit(returningItems[1]);
+            units.removeUnit(returningItems[1]);
+            shop.returnRentedItem(shop.getUnitForName(returningItems[1]));
+        }
+
+        if (returningItems[2] != null) {
+            renter.setThirdItem(null);
+            units.removeUnit(returningItems[2]);
+            units.removeUnit(returningItems[2]);
+            shop.returnRentedItem(shop.getUnitForName(returningItems[2]));
+
+        }
+        setOList();
     }
 
     private void save() {

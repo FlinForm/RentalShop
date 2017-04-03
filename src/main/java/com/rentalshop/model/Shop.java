@@ -27,7 +27,7 @@ public class Shop {
         this.goods = goods;
     }
 
-    public void addItem(SportEquipment equipment) {
+    public void addNewItem(SportEquipment equipment) {
         if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
             return;
         }
@@ -40,7 +40,18 @@ public class Shop {
         }
 
         goods.put(equipment, equipment.getQuantity());
+    }
 
+    public void returnRentedItem(SportEquipment equipment) {
+        if (goods.containsKey(equipment)) {
+            int quantity = goods.get(equipment);
+            goods.remove(equipment);
+            equipment.setQuantity(quantity + 1);
+            goods.put(equipment, equipment.getQuantity());
+            return;
+        }
+
+        goods.put(equipment, equipment.getQuantity());
     }
 
     public void refreshItem(SportEquipment equipment) {
@@ -50,6 +61,20 @@ public class Shop {
 
     public void removeItem(SportEquipment equipment) {
         goods.remove(equipment);
+    }
+
+    public SportEquipment getUnitForName(String name) {
+        SportEquipment equipment;
+        String[] eqName = name.split(" ");
+        for (Map.Entry<SportEquipment, Integer> entry : goods.entrySet()) {
+            equipment = entry.getKey();
+            if (eqName[0].equals(equipment.getCategory().toString())) {
+                if (eqName[1].equals(equipment.getTitle())) {
+                    return equipment;
+                }
+            }
+        }
+        return null;
     }
 
 
