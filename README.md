@@ -9,7 +9,7 @@ you can add new clients to database, and rent items to your clients.
 Also, in this program you have such functions as find item, sort items, remove
 items from list and do some other...
 
-Here is a few screenshots of my project:
+Here are a few screenshots of my project:
 
 The main window:
 ![example1](https://cloud.githubusercontent.com/assets/22094480/24630461/830bbd6a-18c5-11e7-8cf2-cd3332cd8cbd.jpg)
