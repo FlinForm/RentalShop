@@ -5,42 +5,51 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
-
 /**
- * Window that displays alert message. String parameter
- * of "display" is the message you want to show
- * to user.
+ * Created by Pavel Davydenko on 03.04.2017.
  */
-public class AllertBox {
-
-    public static void displayMessage(String text) {
+public class FindItemWindow {
+    private static String itemToFind;
+    public static String display() {
+        itemToFind = null;
         // Creating window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Warning!");
+        window.setTitle("Find item");
 
         window.setResizable(false);
 
         Label label = new Label();
-        label.setText(text);
+        label.setMinWidth(150);
+        label.setText("Enter name of the item you want to find:");
+
+        TextField field = new TextField();
+        field.setPrefWidth(label.getWidth());
+
 
         Button okButton = new Button();
-        okButton.setText("Ok");
-        okButton.setOnAction(e -> window.close());
+        okButton.setText("Find");
+        okButton.setOnAction(e -> {
+            itemToFind = field.getText();
+            window.close();
+        });
+
 
         VBox box = new VBox(15);
         box.setPadding(new Insets(15));
 
         box.setAlignment(Pos.CENTER);
-        box.getChildren().addAll(label, okButton);
+        box.getChildren().addAll(label, field, okButton);
 
 
         window.setScene(new Scene(box));
         window.showAndWait();
+
+        return itemToFind;
     }
 }

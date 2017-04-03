@@ -78,6 +78,7 @@ public class MainWindow {
         Button findItemButton = new Button();
         findItemButton.setText("Find Item");
         findItemButton.setPrefSize(100, 25);
+        findItemButton.setOnAction(e -> findItem());
 
         ChoiceBox<String> choiceBox = new ChoiceBox();
         choiceBox.setPrefWidth(100);
@@ -296,4 +297,14 @@ public class MainWindow {
         shop.refreshItem(equipment);
         setOList(shop.getGoods());
     }
+
+    private void findItem() {
+        String itemToFind = FindItemWindow.display();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTitle().equalsIgnoreCase(itemToFind)) {
+                view.getSelectionModel().select(list.get(i));
+            }
+        }
+    }
+
 }
