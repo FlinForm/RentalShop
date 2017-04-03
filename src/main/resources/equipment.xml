@@ -3,21 +3,21 @@
     <goods>
         <entry>
             <key>
-                <category>BICYCLE</category>
-                <price>80</price>
-                <quantity>1</quantity>
-                <title>Trek</title>
-            </key>
-            <value>1</value>
-        </entry>
-        <entry>
-            <key>
                 <category>SNOWBOARD</category>
                 <price>70</price>
                 <quantity>1</quantity>
                 <title>NewBoard</title>
             </key>
             <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>50</price>
+                <quantity>3</quantity>
+                <title>Graf</title>
+            </key>
+            <value>3</value>
         </entry>
         <entry>
             <key>
@@ -30,12 +30,39 @@
         </entry>
         <entry>
             <key>
-                <category>SKATES</category>
-                <price>30</price>
+                <category>ROLLER_SKATES</category>
+                <price>55</price>
+                <quantity>2</quantity>
+                <title>Nike_Bauer</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>80</price>
                 <quantity>1</quantity>
-                <title>CCM</title>
+                <title>Trek</title>
             </key>
             <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>70</price>
+                <quantity>2</quantity>
+                <title>Merida</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKIING</category>
+                <price>56</price>
+                <quantity>5</quantity>
+                <title>K3</title>
+            </key>
+            <value>5</value>
         </entry>
         <entry>
             <key>
@@ -57,24 +84,6 @@
         </entry>
         <entry>
             <key>
-                <category>BICYCLE</category>
-                <price>50</price>
-                <quantity>5</quantity>
-                <title>Specialized</title>
-            </key>
-            <value>5</value>
-        </entry>
-        <entry>
-            <key>
-                <category>SKATES</category>
-                <price>50</price>
-                <quantity>10</quantity>
-                <title>Graf</title>
-            </key>
-            <value>10</value>
-        </entry>
-        <entry>
-            <key>
                 <category>SKATES</category>
                 <price>70</price>
                 <quantity>6</quantity>
@@ -84,12 +93,21 @@
         </entry>
         <entry>
             <key>
-                <category>ROLLER_SKATES</category>
-                <price>55</price>
-                <quantity>2</quantity>
-                <title>Nike_Bauer</title>
+                <category>BICYCLE</category>
+                <price>50</price>
+                <quantity>3</quantity>
+                <title>Specialized</title>
             </key>
-            <value>2</value>
+            <value>3</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>30</price>
+                <quantity>1</quantity>
+                <title>CCM</title>
+            </key>
+            <value>1</value>
         </entry>
         <entry>
             <key>
@@ -99,15 +117,6 @@
                 <title>K2</title>
             </key>
             <value>1</value>
-        </entry>
-        <entry>
-            <key>
-                <category>BICYCLE</category>
-                <price>70</price>
-                <quantity>2</quantity>
-                <title>Merida</title>
-            </key>
-            <value>2</value>
         </entry>
     </goods>
 </shop>

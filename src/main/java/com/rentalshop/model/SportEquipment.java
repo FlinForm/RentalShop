@@ -13,13 +13,6 @@ public class SportEquipment {
     public SportEquipment() {
     }
 
-    public SportEquipment(Category category, String title, int price, int quantity) {
-        this.category = category;
-        this.title = title;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -68,8 +61,7 @@ public class SportEquipment {
         SportEquipment equipment = (SportEquipment) o;
 
         if (price != equipment.price) return false;
-        if (category != equipment.category) return false;
-        return title != null ? title.equals(equipment.title) : equipment.title == null;
+        return category == equipment.category && (title != null ? title.equals(equipment.title) : equipment.title == null);
     }
 
     @Override

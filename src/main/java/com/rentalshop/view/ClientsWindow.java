@@ -16,11 +16,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 /**
- * Created by Pavel Davydenko on 01.04.2017.
+ * The client window with clients and rented sport equipment.
+ * In this class I used Border pane to place elements
+ * in the window. Methods: "addTopHBox()", "addBottomHBox()",
+ * "addCenterView()" are describing boxes that placed in
+ * different parts of BorderPane.
  */
 public class ClientsWindow {
     private Shop shop;
-    Clients clients;
+    private Clients clients;
     private TableView view;
     private XmlDataParser parser;
     private RentedUnits units;
@@ -36,6 +40,7 @@ public class ClientsWindow {
 
     }
 
+    // Placing elements on main scene and displaying a scene.
     public Scene display(){
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(addTopHBox());
@@ -66,17 +71,12 @@ public class ClientsWindow {
         Button removeClientButton = new Button();
         removeClientButton.setText("Remove client");
         removeClientButton.setPrefSize(100, 25);
-        removeClientButton.setOnAction(e -> {
-            removeClient();
-        });
+        removeClientButton.setOnAction(e -> removeClient());
 
         Button returnItemsButton = new Button();
         returnItemsButton.setText("Return items");
         returnItemsButton.setPrefSize(100, 25);
-        returnItemsButton.setOnAction(e -> {
-            returnItem((Renter) view.getSelectionModel().getSelectedItem());
-
-        });
+        returnItemsButton.setOnAction(e -> returnItem((Renter) view.getSelectionModel().getSelectedItem()));
 
 
         hBox.getChildren().addAll(addClientButton, removeClientButton, returnItemsButton);
@@ -196,23 +196,23 @@ public class ClientsWindow {
             return;
         }
         String[] returningItems = ReturnItemWindow.display(renter);
-        System.out.println(returningItems[0] + " " + returningItems[1] + " " + returningItems[2]);
 
         if (returningItems[0] != null) {
             renter.setFirstItem(null);
+            renter.incAvailableItems();
             units.removeUnit(returningItems[0]);
             shop.returnRentedItem(shop.getUnitForName(returningItems[0]));
         }
-
         if (returningItems[1] != null) {
             renter.setSecondItem(null);
+            renter.incAvailableItems();
             units.removeUnit(returningItems[1]);
             units.removeUnit(returningItems[1]);
             shop.returnRentedItem(shop.getUnitForName(returningItems[1]));
         }
-
         if (returningItems[2] != null) {
             renter.setThirdItem(null);
+            renter.incAvailableItems();
             units.removeUnit(returningItems[2]);
             units.removeUnit(returningItems[2]);
             shop.returnRentedItem(shop.getUnitForName(returningItems[2]));

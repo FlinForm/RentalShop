@@ -11,18 +11,17 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 02.04.2017.
+ * Window that displays when returning an item.
  */
-public class ReturnItemWindow {
+class ReturnItemWindow {
     public static String[] display(Renter renter) {
-        String[] returningItems = {null, null, null};
+        String[] returningItems = new String[3];
 
         // Creating window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Return items");
         window.setResizable(false);
-
 
         // Creating window elements
         Label label1 = new Label();
@@ -51,8 +50,6 @@ public class ReturnItemWindow {
         if (renter.getThirdItem() != null) {
             thirdItemBox.getItems().addAll(renter.getThirdItem());
         }
-
-
 
         Button yesButton = new Button();
         Button noButton = new Button();

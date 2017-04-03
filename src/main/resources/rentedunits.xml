@@ -3,10 +3,10 @@
     <rentedUnits>
         <entry>
             <key>
-                <category>BICYCLE</category>
-                <price>80</price>
+                <category>SKATES</category>
+                <price>50</price>
                 <quantity>1</quantity>
-                <title>Trek</title>
+                <title>Graf</title>
             </key>
             <value>1</value>
         </entry>
@@ -21,6 +21,15 @@
         </entry>
         <entry>
             <key>
+                <category>BICYCLE</category>
+                <price>50</price>
+                <quantity>3</quantity>
+                <title>Specialized</title>
+            </key>
+            <value>3</value>
+        </entry>
+        <entry>
+            <key>
                 <category>SKATES</category>
                 <price>30</price>
                 <quantity>1</quantity>
@@ -31,11 +40,11 @@
         <entry>
             <key>
                 <category>BICYCLE</category>
-                <price>50</price>
-                <quantity>5</quantity>
-                <title>Specialized</title>
+                <price>80</price>
+                <quantity>1</quantity>
+                <title>Trek</title>
             </key>
-            <value>5</value>
+            <value>1</value>
         </entry>
         <entry>
             <key>

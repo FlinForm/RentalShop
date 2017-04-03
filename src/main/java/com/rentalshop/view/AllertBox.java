@@ -13,10 +13,10 @@ import javafx.stage.Stage;
 
 /**
  * Window that displays alert message. String parameter
- * of "display" is the message you want to show
+ * of "display" method is the message you want to show
  * to user.
  */
-public class AllertBox {
+class AllertBox {
 
     public static void displayMessage(String text) {
         // Creating window
@@ -33,12 +33,12 @@ public class AllertBox {
         okButton.setText("Ok");
         okButton.setOnAction(e -> window.close());
 
+        // Creating panes and placing elements
         VBox box = new VBox(15);
         box.setPadding(new Insets(15));
 
         box.setAlignment(Pos.CENTER);
         box.getChildren().addAll(label, okButton);
-
 
         window.setScene(new Scene(box));
         window.showAndWait();

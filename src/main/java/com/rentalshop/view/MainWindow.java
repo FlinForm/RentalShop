@@ -20,7 +20,11 @@ import java.util.Map;
 
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * The client window with clients and rented sport equipment.
+ * In this class I used Border pane to place elements
+ * in the window. Methods: "addTopHBox()", "addBottomHBox()",
+ * "addCenterView()", addLeftVBox() are describing boxes that placed in
+ * different parts of BorderPane.
  */
 public class MainWindow {
     private Shop shop;
@@ -40,6 +44,7 @@ public class MainWindow {
         this.clients = clients;
     }
 
+    // Placing elements on main scene and displaying a scene.
     public Scene display() {
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(addTopHBox());
@@ -300,9 +305,9 @@ public class MainWindow {
 
     private void findItem() {
         String itemToFind = FindItemWindow.display();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTitle().equalsIgnoreCase(itemToFind)) {
-                view.getSelectionModel().select(list.get(i));
+        for (SportEquipment aList : list) {
+            if (aList.getTitle().equalsIgnoreCase(itemToFind)) {
+                view.getSelectionModel().select(aList);
             }
         }
     }

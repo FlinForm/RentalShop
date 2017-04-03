@@ -1,7 +1,7 @@
 package com.rentalshop.model;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * This enum describes categories of sport equipment.
  */
 public enum Category {
     SKATES,

@@ -10,7 +10,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * Controller class
  */
 public class Controller extends Application {
     private static Stage window;

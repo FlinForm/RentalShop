@@ -11,9 +11,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 01.04.2017.
+ * Window that displays when adding a new client to Clients list
  */
-public class AddClientWindow {
+class AddClientWindow {
     private static Renter renter;
 
     public static Renter display() {
@@ -28,7 +28,6 @@ public class AddClientWindow {
         window.setResizable(false);
 
         // Creating window elements
-
         Label label1 = new Label();
         label1.setText("Name:");
 
@@ -42,11 +41,21 @@ public class AddClientWindow {
         TextField surname = new TextField();
         TextField passport = new TextField();
 
-
         Button yesButton = new Button();
         Button noButton = new Button();
         yesButton.setText("Add");
         noButton.setText("Cancel");
+        yesButton.setOnAction(event -> {
+            renter.setName(name.getText());
+            renter.setSurname(surname.getText());
+            renter.setPassport(passport.getText());
+            renter.setAvailableItems(3);
+            window.close();
+        });
+        noButton.setOnAction(event -> {
+            renter = null;
+            window.close();
+        });
 
         // Creating panes and placing elements
         GridPane pane = new GridPane();
@@ -63,19 +72,6 @@ public class AddClientWindow {
         GridPane.setConstraints(noButton, 1, 3);
 
         pane.getChildren().addAll(label1, label2, label3, name, surname, passport, yesButton, noButton);
-
-
-        yesButton.setOnAction(event -> {
-            renter.setName(name.getText());
-            renter.setSurname(surname.getText());
-            renter.setPassport(passport.getText());
-            renter.setAvailableItems(3);
-            window.close();
-        });
-        noButton.setOnAction(event -> {
-            renter = null;
-            window.close();
-        });
 
         window.setScene(new Scene(pane));
         window.showAndWait();

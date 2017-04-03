@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 import java.util.List;
 
 /**
- * Created by Pavel Davydenko on 01.04.2017.
+ * Window that displays when renting an item.
  */
-public class RentItemWindow {
+class RentItemWindow {
     private static Object[] returnedData;
 
     public static Object[] display(List<Renter> clients) {
@@ -41,12 +41,20 @@ public class RentItemWindow {
         ChoiceBox<Integer> numberOfItems = new ChoiceBox<>();
         numberOfItems.getItems().addAll(1, 2, 3);
 
-
-
         Button yesButton = new Button();
         Button noButton = new Button();
         yesButton.setText("Rent");
         noButton.setText("Cancel");
+        yesButton.setOnAction(event -> {
+            if (renters.getValue() == null || numberOfItems.getValue() == null) {
+                AllertBox.displayMessage("Please, make your choice!");
+            } else {
+                returnedData[0] = renters.getValue();
+                returnedData[1] = numberOfItems.getValue();
+                window.close();
+            }
+        });
+        noButton.setOnAction(event -> window.close());
 
         // Creating panes and placing elements
         GridPane pane = new GridPane();
@@ -61,18 +69,6 @@ public class RentItemWindow {
         GridPane.setConstraints(noButton, 1, 2);
 
         pane.getChildren().addAll(label1, label2, yesButton, renters, numberOfItems, noButton);
-
-
-        yesButton.setOnAction(event -> {
-            if (renters.getValue() == null || numberOfItems.getValue() == null) {
-                AllertBox.displayMessage("Please, make your choice!");
-            } else {
-                returnedData[0] = renters.getValue();
-                returnedData[1] = numberOfItems.getValue();
-                window.close();
-            }
-        });
-        noButton.setOnAction(event -> window.close());
 
         window.setScene(new Scene(pane));
         window.showAndWait();

@@ -13,9 +13,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 31.03.2017.
+ * Window that displays when adding a new item to shop.
  */
-public class AddNewItemWindow {
+class AddNewItemWindow {
     private static SportEquipment equipment;
 
     public static SportEquipment display() {
@@ -30,7 +30,6 @@ public class AddNewItemWindow {
         window.setResizable(false);
 
         // Creating window elements
-
         Label label1 = new Label();
         label1.setText("Category:");
 
@@ -51,32 +50,10 @@ public class AddNewItemWindow {
         TextField price = new TextField();
         TextField quantity = new TextField();
 
-
-
         Button yesButton = new Button();
         Button noButton = new Button();
             yesButton.setText("Add");
             noButton.setText("Cancel");
-
-        // Creating panes and placing elements
-        GridPane pane = new GridPane();
-        pane.setPadding(new Insets(25));
-        pane.setVgap(25);
-        pane.setHgap(25);
-        GridPane.setConstraints(label1, 0, 0);
-        GridPane.setConstraints(label2, 0, 1);
-        GridPane.setConstraints(label3, 0, 2);
-        GridPane.setConstraints(label4, 0, 3);
-        GridPane.setConstraints(yesButton, 0, 4);
-        GridPane.setConstraints(category, 1, 0);
-        GridPane.setConstraints(title, 1, 1);
-        GridPane.setConstraints(price, 1, 2);
-        GridPane.setConstraints(quantity, 1, 3);
-        GridPane.setConstraints(noButton, 1, 4);
-
-        pane.getChildren().addAll(label1, label2, label3, label4, category, title, price, quantity, yesButton, noButton);
-
-
         yesButton.setOnAction(event -> {
             equipment.setCategory(category.getValue());
             equipment.setTitle(title.getText());
@@ -98,6 +75,24 @@ public class AddNewItemWindow {
             equipment = null;
             window.close();
         });
+
+        // Creating panes and placing elements
+        GridPane pane = new GridPane();
+        pane.setPadding(new Insets(25));
+        pane.setVgap(25);
+        pane.setHgap(25);
+        GridPane.setConstraints(label1, 0, 0);
+        GridPane.setConstraints(label2, 0, 1);
+        GridPane.setConstraints(label3, 0, 2);
+        GridPane.setConstraints(label4, 0, 3);
+        GridPane.setConstraints(yesButton, 0, 4);
+        GridPane.setConstraints(category, 1, 0);
+        GridPane.setConstraints(title, 1, 1);
+        GridPane.setConstraints(price, 1, 2);
+        GridPane.setConstraints(quantity, 1, 3);
+        GridPane.setConstraints(noButton, 1, 4);
+
+        pane.getChildren().addAll(label1, label2, label3, label4, category, title, price, quantity, yesButton, noButton);
 
         window.setScene(new Scene(pane));
         window.showAndWait();

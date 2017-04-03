@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Pavel Davydenko on 30.03.2017.
+ * Here located a Hashmap with rented units.
+ * The second parameter of Hashmap is  number of available item units.
+ * --- Setter isn't redundant. It needed for
+ * parsing data from *xml with JAXB parser ---
  */
 
 @XmlType(name = "units")
@@ -54,7 +57,7 @@ public class RentedUnits {
         rentedUnits.put(equipment, equipment.getQuantity());
     }
 
-    public SportEquipment getUnitForName(String name) {
+    private SportEquipment getUnitForName(String name) {
         SportEquipment equipment;
         String[] eqName = name.split(" ");
         for (Map.Entry<SportEquipment, Integer> entry : rentedUnits.entrySet()) {

@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Pavel Davydenko on 01.04.2017.
+ * Here located a list with clients.
+ * --- Setter isn't redundant. It needed for
+ * parsing data from *xml with JAXB parser ---
  */
 
 @XmlType(name = "units")

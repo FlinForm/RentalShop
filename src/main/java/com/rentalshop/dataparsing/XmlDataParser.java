@@ -7,10 +7,9 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 /**
- * Created by Pavel Davydenko on 31.03.2017.
+ * Getting and writing data to *.xml files with JAXB parser.
  */
-public class XmlDataParser implements DataParser{
-    @Override
+public class XmlDataParser {
     public Object getData(String filename, Object o){
 
         try {
@@ -22,7 +21,6 @@ public class XmlDataParser implements DataParser{
         return o;
     }
 
-    @Override
     public void writeData(String filename, Object object){
         try {
             JAXBContext context = JAXBContext.newInstance(object.getClass());

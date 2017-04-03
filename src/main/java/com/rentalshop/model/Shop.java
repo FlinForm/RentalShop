@@ -8,6 +8,8 @@ import java.util.Map;
 /**
  * This class is a storage of units available in rental shop.
  * The second parameter of Hashmap is  number of available item units.
+ * --- Setter isn't redundant. It needed for
+ * parsing data from *xml with JAXB parser ---
  */
 @XmlType(name = "shop")
 @XmlRootElement
@@ -17,7 +19,6 @@ public class Shop {
 
     public Shop() {
     }
-
 
     public Map<SportEquipment, Integer> getGoods() {
         return goods;
@@ -38,19 +39,16 @@ public class Shop {
             goods.put(equipment, equipment.getQuantity());
             return;
         }
-
         goods.put(equipment, equipment.getQuantity());
     }
 
     public void returnRentedItem(SportEquipment equipment) {
         if (goods.containsKey(equipment)) {
-            int quantity = goods.get(equipment);
             goods.remove(equipment);
-            equipment.setQuantity(quantity + 1);
+            equipment.incQuantity();
             goods.put(equipment, equipment.getQuantity());
             return;
         }
-
         goods.put(equipment, equipment.getQuantity());
     }
 

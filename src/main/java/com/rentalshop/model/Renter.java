@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * Describes a renter.
+ * --- Getters are't redundant. They needed for
+ * parsing data from *xml with JAXB parser ---
  */
 public class Renter implements Serializable {
     private String name;
@@ -92,6 +94,10 @@ public class Renter implements Serializable {
 
     }
 
+    public void incAvailableItems() {
+        availableItems++;
+    }
+
     public boolean hasRentedItems() {
         if (firstItem == null && secondItem == null && thirdItem == null) {
             return false;
@@ -107,8 +113,7 @@ public class Renter implements Serializable {
         Renter renter = (Renter) o;
 
         if (name != null ? !name.equals(renter.name) : renter.name != null) return false;
-        if (surname != null ? !surname.equals(renter.surname) : renter.surname != null) return false;
-        return passport != null ? passport.equals(renter.passport) : renter.passport == null;
+        return (surname != null ? surname.equals(renter.surname) : renter.surname == null) && (passport != null ? passport.equals(renter.passport) : renter.passport == null);
     }
 
     @Override
