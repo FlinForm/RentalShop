@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class is a storage of units, available in rental shop.
- * The second parameter of Hashmap is a number of available item units.
+ * This class is a storage of units available in rental shop.
+ * The second parameter of Hashmap is  number of available item units.
  */
 @XmlType(name = "shop")
 @XmlRootElement
@@ -26,7 +26,6 @@ public class Shop {
     public void setGoods(Map<SportEquipment, Integer> goods) {
         this.goods = goods;
     }
-
 
     public void addItem(SportEquipment equipment) {
         if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {

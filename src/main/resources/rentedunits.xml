@@ -3,19 +3,10 @@
     <rentedUnits>
         <entry>
             <key>
-                <category>BICYCLE</category>
+                <category>SNOWBOARD</category>
                 <price>70</price>
-                <quantity>2</quantity>
-                <title>Merida</title>
-            </key>
-            <value>2</value>
-        </entry>
-        <entry>
-            <key>
-                <category>SKATES</category>
-                <price>30</price>
                 <quantity>1</quantity>
-                <title>CCM</title>
+                <title>NewBoard</title>
             </key>
             <value>1</value>
         </entry>
@@ -30,12 +21,21 @@
         </entry>
         <entry>
             <key>
-                <category>SNOWBOARD</category>
-                <price>70</price>
+                <category>SKATES</category>
+                <price>30</price>
                 <quantity>1</quantity>
-                <title>NewBoard</title>
+                <title>CCM</title>
             </key>
             <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>70</price>
+                <quantity>2</quantity>
+                <title>Merida</title>
+            </key>
+            <value>2</value>
         </entry>
         <entry>
             <key>

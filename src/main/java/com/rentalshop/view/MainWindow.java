@@ -29,6 +29,7 @@ public class MainWindow {
     private XmlDataParser parser;
     private ObservableList<SportEquipment> list;
     private RentedUnits units;
+    private boolean switchedToRentedItems;
 
     public MainWindow(Shop shop, XmlDataParser parser, RentedUnits units, Clients clients) {
         this.shop = shop;
@@ -82,11 +83,18 @@ public class MainWindow {
         choiceBox.setPrefWidth(100);
         choiceBox.getItems().addAll( "Available", "Rented");
         choiceBox.setValue("Available");
+        switchedToRentedItems = false;
         choiceBox.setOnAction(e -> {
             if (choiceBox.getValue().equals("Available")) {
                 setOList(shop.getGoods());
+                switchedToRentedItems = false;
+                removeItemButton.setDisable(false);
+                addItemButton.setDisable(false);
             } else {
                 setOList(units.getRentedUnits());
+                switchedToRentedItems = true;
+                removeItemButton.setDisable(true);
+                addItemButton.setDisable(true);
             }
         });
 
@@ -110,7 +118,13 @@ public class MainWindow {
         titleText.setFont(new Font("Arial", 14));
 
         Hyperlink allGoods = new Hyperlink("All goods");
-        allGoods.setOnAction(e -> view.setItems(setOList(shop.getGoods())));
+        allGoods.setOnAction(e -> {
+            if (switchedToRentedItems) {
+                view.setItems(setOList(units.getRentedUnits()));
+            } else {
+                view.setItems(setOList(shop.getGoods()));
+            }
+        });
         allGoods.setVisited(true);
 
         Hyperlink bicycles = new Hyperlink("Bicycles");
@@ -225,13 +239,25 @@ public class MainWindow {
 
     private ObservableList<SportEquipment> setOList(Category category) {
         list.clear();
-        if (shop.getGoods() == null) {
-            return list;
-        }
-        for (Map.Entry entry : shop.getGoods().entrySet()) {
-            SportEquipment equipment = (SportEquipment) entry.getKey();
-            if (equipment.getCategory().equals(category)) {
-                list.add((SportEquipment) entry.getKey());
+        if (switchedToRentedItems) {
+            if (units.getRentedUnits() == null) {
+                return list;
+            }
+            for (Map.Entry entry : units.getRentedUnits().entrySet()) {
+                SportEquipment equipment = (SportEquipment) entry.getKey();
+                if (equipment.getCategory().equals(category)) {
+                    list.add((SportEquipment) entry.getKey());
+                }
+            }
+        } else {
+            if (shop.getGoods() == null) {
+                return list;
+            }
+            for (Map.Entry entry : shop.getGoods().entrySet()) {
+                SportEquipment equipment = (SportEquipment) entry.getKey();
+                if (equipment.getCategory().equals(category)) {
+                    list.add((SportEquipment) entry.getKey());
+                }
             }
         }
         return list;
@@ -270,6 +296,4 @@ public class MainWindow {
         shop.refreshItem(equipment);
         setOList(shop.getGoods());
     }
-
-
 }
