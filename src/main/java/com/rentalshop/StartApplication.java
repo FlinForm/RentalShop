@@ -12,8 +12,12 @@ public class StartApplication extends Application{
         launch(args);
     }
 
-    public void start(Stage primaryStage) throws Exception {
-        Controller controller = new Controller();
-        controller.start(primaryStage);
+    public void start(Stage primaryStage) {
+        try {
+            Controller controller = new Controller();
+            controller.start(primaryStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
