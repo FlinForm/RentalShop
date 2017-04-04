@@ -85,6 +85,11 @@ public class MainWindow {
         findItemButton.setPrefSize(100, 25);
         findItemButton.setOnAction(e -> findItem());
 
+        Button rentItemButton = new Button();
+        rentItemButton.setText("Rent item");
+        rentItemButton.setPrefSize(100, 25);
+        rentItemButton.setOnAction(e -> rentItem((SportEquipment) view.getSelectionModel().getSelectedItem()));
+
         ChoiceBox<String> choiceBox = new ChoiceBox();
         choiceBox.setPrefWidth(100);
         choiceBox.getItems().addAll( "Available", "Rented");
@@ -96,18 +101,15 @@ public class MainWindow {
                 switchedToRentedItems = false;
                 removeItemButton.setDisable(false);
                 addItemButton.setDisable(false);
+                rentItemButton.setDisable(false);
             } else {
                 setOList(units.getRentedUnits());
                 switchedToRentedItems = true;
                 removeItemButton.setDisable(true);
                 addItemButton.setDisable(true);
+                rentItemButton.setDisable(true);
             }
         });
-
-        Button rentItemButton = new Button();
-        rentItemButton.setText("Rent item");
-        rentItemButton.setPrefSize(100, 25);
-        rentItemButton.setOnAction(e -> rentItem((SportEquipment) view.getSelectionModel().getSelectedItem()));
 
         hBox.getChildren().addAll(addItemButton, removeItemButton, findItemButton, choiceBox, rentItemButton);
 

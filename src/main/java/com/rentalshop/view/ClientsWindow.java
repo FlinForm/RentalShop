@@ -67,7 +67,6 @@ public class ClientsWindow {
             }
         });
 
-
         Button removeClientButton = new Button();
         removeClientButton.setText("Remove client");
         removeClientButton.setPrefSize(100, 25);
