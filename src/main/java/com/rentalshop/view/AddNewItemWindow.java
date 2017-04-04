@@ -61,11 +61,11 @@ class AddNewItemWindow {
                 equipment.setPrice(Integer.parseInt(price.getText()));
                 equipment.setQuantity(Integer.parseInt(quantity.getText()));
                 if ("".equals(equipment.getTitle()) || "".equals(equipment.getPrice()) || "".equals(equipment.getQuantity())) {
-                    AllertBox.displayMessage("You entered wrong data!");
+                    AlertBox.displayMessage("You entered wrong data!");
                     window.close();
                 }
             } catch (NumberFormatException e) {
-                AllertBox.displayMessage("You entered wrong data!");
+                AlertBox.displayMessage("You entered wrong data!");
                 window.close();
             }
 

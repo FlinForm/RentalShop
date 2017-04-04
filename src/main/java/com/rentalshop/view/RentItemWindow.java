@@ -47,7 +47,7 @@ class RentItemWindow {
         noButton.setText("Cancel");
         yesButton.setOnAction(event -> {
             if (renters.getValue() == null || numberOfItems.getValue() == null) {
-                AllertBox.displayMessage("Please, make your choice!");
+                AlertBox.displayMessage("Please, make your choice!");
             } else {
                 returnedData[0] = renters.getValue();
                 returnedData[1] = numberOfItems.getValue();

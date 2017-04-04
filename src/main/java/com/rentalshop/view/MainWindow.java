@@ -280,7 +280,7 @@ public class MainWindow {
     private void rentItem(SportEquipment equipment) {
         Object[] data = RentItemWindow.display(clients.getClients());
         if (equipment == null) {
-            AllertBox.displayMessage("Please, select item you want to rent!");
+            AlertBox.displayMessage("Please, select item you want to rent!");
             return;
         }
         if (data[0] == null || data[1] == null) {
@@ -289,10 +289,10 @@ public class MainWindow {
         Renter renter = (Renter) data[0];
         int quantityRentItems = (int) data[1];
         if (quantityRentItems > equipment.getQuantity()) {
-            AllertBox.displayMessage("You trying to rent so much items... :)");
+            AlertBox.displayMessage("You trying to rent so much items... :)");
             return;
         } else if (quantityRentItems > renter.getAvailableItems()) {
-            AllertBox.displayMessage("You can't rent more then 3 items!");
+            AlertBox.displayMessage("You can't rent more then 3 items!");
             return;
         }
         for (int i = 0; i < quantityRentItems; i++) {

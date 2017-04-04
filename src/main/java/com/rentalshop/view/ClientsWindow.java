@@ -180,7 +180,7 @@ public class ClientsWindow {
         for (int i = 0; i < clients.getClients().size(); i++) {
             if (clients.getClients().get(i).equals(view.getSelectionModel().getSelectedItem())) {
                 if (clients.getClients().get(i).hasRentedItems()) {
-                    AllertBox.displayMessage("You can't remove client with rented inventory!");
+                    AlertBox.displayMessage("You can't remove client with rented inventory!");
                     return;
                 }
             }
@@ -191,7 +191,7 @@ public class ClientsWindow {
 
     private void returnItem(Renter renter) {
         if (renter == null) {
-            AllertBox.displayMessage("Please, select a renter!");
+            AlertBox.displayMessage("Please, select a renter!");
             return;
         }
         String[] returningItems = ReturnItemWindow.display(renter);

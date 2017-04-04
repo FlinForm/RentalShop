@@ -11,7 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Pavel Davydenko on 03.04.2017.
+ * This window is displayed when trying to find an item.
  */
 class FindItemWindow {
     private static String itemToFind;

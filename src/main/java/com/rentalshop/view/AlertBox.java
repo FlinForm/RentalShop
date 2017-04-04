@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * of "display" method is the message you want to show
  * to user.
  */
-class AllertBox {
+class AlertBox {
 
     public static void displayMessage(String text) {
         // Creating window
