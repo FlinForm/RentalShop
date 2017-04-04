@@ -11,7 +11,6 @@ import java.io.File;
  */
 public class XmlDataParser {
     public Object getData(String filename, Object o){
-
         try {
             JAXBContext context = JAXBContext.newInstance(o.getClass());
             Unmarshaller unmarshaller = context.createUnmarshaller();

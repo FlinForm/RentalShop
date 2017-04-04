@@ -17,7 +17,6 @@ public class Controller extends Application {
     private static MainWindow mainWindow;
     private static ClientsWindow clientsWindow;
 
-
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
         XmlDataParser parser = new XmlDataParser();
@@ -31,14 +30,11 @@ public class Controller extends Application {
         clientsWindow = new ClientsWindow(shop, parser, units, clients);
 
 
-
-
         primaryStage.setScene(mainWindow.display());
         primaryStage.setResizable(false);
         primaryStage.setTitle("Rental Shop");
         primaryStage.show();
     }
-
 
     public static void setMainScene() {
         window.setScene(mainWindow.display());
