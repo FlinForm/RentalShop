@@ -33,16 +33,26 @@
         <surname>Krutikov</surname>
     </clients>
     <clients>
-        <availableItems>2</availableItems>
+        <availableItems>1</availableItems>
         <firstItem>BICYCLE Trek</firstItem>
         <name>Nika</name>
         <passport>MP4769876</passport>
+        <secondItem>SKIING Volant</secondItem>
         <surname>Malinouskaya</surname>
     </clients>
     <clients>
-        <availableItems>3</availableItems>
+        <availableItems>1</availableItems>
+        <firstItem>SKATES Nike-Bauer</firstItem>
         <name>Dmitry</name>
         <passport>MP3463213</passport>
+        <secondItem>SKATES Nike-Bauer</secondItem>
         <surname>Ischenko</surname>
+    </clients>
+    <clients>
+        <availableItems>2</availableItems>
+        <firstItem>SNOWBOARD Thunderstick</firstItem>
+        <name>Margorita</name>
+        <passport>MP5472345</passport>
+        <surname>Milyuk</surname>
     </clients>
 </clients>

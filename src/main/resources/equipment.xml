@@ -3,21 +3,21 @@
     <goods>
         <entry>
             <key>
-                <category>SNOWBOARD</category>
-                <price>70</price>
-                <quantity>1</quantity>
-                <title>NewBoard</title>
-            </key>
-            <value>1</value>
-        </entry>
-        <entry>
-            <key>
                 <category>SKATES</category>
                 <price>50</price>
                 <quantity>3</quantity>
                 <title>Graf</title>
             </key>
             <value>3</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>50</price>
+                <quantity>2</quantity>
+                <title>GT</title>
+            </key>
+            <value>2</value>
         </entry>
         <entry>
             <key>
@@ -39,10 +39,10 @@
         </entry>
         <entry>
             <key>
-                <category>BICYCLE</category>
-                <price>80</price>
+                <category>SNOWBOARD</category>
+                <price>70</price>
                 <quantity>1</quantity>
-                <title>Trek</title>
+                <title>NewBoard</title>
             </key>
             <value>1</value>
         </entry>
@@ -58,6 +58,15 @@
         <entry>
             <key>
                 <category>SKIING</category>
+                <price>40</price>
+                <quantity>1</quantity>
+                <title>Volant</title>
+            </key>
+            <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKIING</category>
                 <price>56</price>
                 <quantity>5</quantity>
                 <title>K3</title>
@@ -68,10 +77,10 @@
             <key>
                 <category>BICYCLE</category>
                 <price>50</price>
-                <quantity>2</quantity>
-                <title>GT</title>
+                <quantity>8</quantity>
+                <title>Vimpex</title>
             </key>
-            <value>2</value>
+            <value>8</value>
         </entry>
         <entry>
             <key>
@@ -84,12 +93,48 @@
         </entry>
         <entry>
             <key>
+                <category>BICYCLE</category>
+                <price>20</price>
+                <quantity>3</quantity>
+                <title>Sundays</title>
+            </key>
+            <value>3</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SNOWBOARD</category>
+                <price>50</price>
+                <quantity>3</quantity>
+                <title>Supernova</title>
+            </key>
+            <value>3</value>
+        </entry>
+        <entry>
+            <key>
                 <category>SKATES</category>
                 <price>70</price>
-                <quantity>6</quantity>
+                <quantity>2</quantity>
                 <title>Nike-Bauer</title>
             </key>
-            <value>6</value>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SNOWBOARD</category>
+                <price>70</price>
+                <quantity>1</quantity>
+                <title>Thunderstick</title>
+            </key>
+            <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKATES</category>
+                <price>30</price>
+                <quantity>1</quantity>
+                <title>CCM</title>
+            </key>
+            <value>1</value>
         </entry>
         <entry>
             <key>
@@ -103,11 +148,38 @@
         <entry>
             <key>
                 <category>SKATES</category>
-                <price>30</price>
+                <price>25</price>
+                <quantity>2</quantity>
+                <title>Reebok</title>
+            </key>
+            <value>2</value>
+        </entry>
+        <entry>
+            <key>
+                <category>BICYCLE</category>
+                <price>80</price>
                 <quantity>1</quantity>
-                <title>CCM</title>
+                <title>Trek</title>
             </key>
             <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKIING</category>
+                <price>80</price>
+                <quantity>6</quantity>
+                <title>Atomic</title>
+            </key>
+            <value>6</value>
+        </entry>
+        <entry>
+            <key>
+                <category>SKIING</category>
+                <price>55</price>
+                <quantity>5</quantity>
+                <title>Elan</title>
+            </key>
+            <value>5</value>
         </entry>
         <entry>
             <key>
@@ -117,6 +189,15 @@
                 <title>K2</title>
             </key>
             <value>1</value>
+        </entry>
+        <entry>
+            <key>
+                <category>ROLLER_SKATES</category>
+                <price>40</price>
+                <quantity>7</quantity>
+                <title>Tempish</title>
+            </key>
+            <value>7</value>
         </entry>
     </goods>
 </shop>
