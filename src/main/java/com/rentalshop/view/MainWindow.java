@@ -20,7 +20,8 @@ import java.util.Map;
 
 
 /**
- * The client window with clients and rented sport equipment.
+ * The main window with sport equipment, where you can add
+ * new units and sort them.
  * In this class I used Border pane to place elements
  * in the window. Methods: "addTopHBox()", "addBottomHBox()",
  * "addCenterView()", addLeftVBox() are describing boxes that placed in
